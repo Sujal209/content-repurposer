@@ -577,18 +577,6 @@ body::before {
 
 /* FORCED UI FIXES - These styles are applied with !important to ensure visibility */
 
-/* Better focus states for all interactive elements */
-button:focus,
-input:focus,
-textarea:focus,
-select:focus,
-a:focus,
-[role="button"]:focus {
-  outline: 2px solid #00d4ff !important;
-  outline-offset: 2px !important;
-  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2) !important;
-}
-
 /* High contrast text for better accessibility */
 .text-gray-600 {
   color: rgb(75, 85, 99) !important; /* Darker gray for better contrast */

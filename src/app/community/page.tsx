@@ -135,10 +135,12 @@ export default function CommunityPage() {
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                <Users className="h-4 w-4 text-white" />
-              </div>
-              <h1 className="text-xl font-bold gradient-text">Community</h1>
+              <img 
+                src="/repurposemate-logo.png" 
+                alt="ContentCraft logo" 
+                className="w-8 h-8 object-contain drop-shadow-lg"
+              />
+              <h1 className="text-xl font-bold gradient-text">ContentCraft</h1>
             </Link>
             
             <div className="flex items-center gap-4">

@@ -33,11 +33,11 @@ const sections = [
       },
       {
         subtitle: 'Content Data',
-        details: 'We temporarily process your input content to generate transformations. This content is not stored permanently and is deleted after processing.'
+        details: 'We process your blog posts, articles, and long-form content to generate social media transformations. Input content is processed in memory only and immediately deleted after transformation.'
       },
       {
         subtitle: 'Usage Data',
-        details: 'We collect analytics about how you use ContentCraft, including feature usage, API calls, and performance metrics to improve our service.'
+        details: 'We track transformation counts, content types processed, and feature usage to monitor your daily limits and improve our AI algorithms.'
       },
       {
         subtitle: 'Technical Data',
@@ -51,8 +51,8 @@ const sections = [
     icon: Eye,
     content: [
       {
-        subtitle: 'Service Provision',
-        details: 'To provide, maintain, and improve ContentCraft\'s AI content transformation services.'
+        subtitle: 'AI Content Transformation',
+        details: 'To transform your long-form content into Twitter threads, LinkedIn carousels, and Instagram Reels using our AI engine.'
       },
       {
         subtitle: 'Communication',
@@ -86,8 +86,8 @@ const sections = [
         details: 'In the event of a merger or acquisition, your information may be transferred as part of the business assets.'
       },
       {
-        subtitle: 'No Content Training',
-        details: 'We never use your content to train AI models or share it with third parties for any purpose.'
+        subtitle: 'Zero Content Training',
+        details: 'Your content is never used to train our AI models, stored in databases, or shared with OpenAI or any third parties. We maintain strict data isolation.'
       }
     ]
   },
@@ -173,7 +173,7 @@ export default function PrivacyPolicyPage() {
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
                 <Shield className="h-4 w-4 text-white" />
               </div>
-              <h1 className="text-xl font-bold gradient-text">Privacy Policy</h1>
+              <h1 className="text-xl font-bold gradient-text">ContentCraft</h1>
             </Link>
             
             <div className="flex items-center gap-4">
@@ -204,7 +204,7 @@ export default function PrivacyPolicyPage() {
                 Privacy Policy
               </h1>
               <p className="text-xl text-muted max-w-2xl mx-auto mb-6">
-                We take your privacy seriously. This policy explains how we collect, use, and protect your information.
+                Your privacy is our priority. This policy explains how ContentCraft collects, uses, and protects your data when transforming content with AI.
               </p>
               <div className="flex items-center justify-center gap-4 text-sm text-muted">
                 <span>Last updated: January 28, 2025</span>
@@ -221,11 +221,11 @@ export default function PrivacyPolicyPage() {
                   <div>
                     <h3 className="font-semibold text-blue-800 mb-2">Privacy Summary</h3>
                     <ul className="text-blue-700 text-sm space-y-1">
-                      <li>• We only collect data necessary to provide our service</li>
-                      <li>• Your content is processed in memory and immediately deleted</li>
-                      <li>• We never use your content to train AI models</li>
-                      <li>• You can delete your account and data at any time</li>
-                      <li>• We comply with GDPR, CCPA, and other privacy regulations</li>
+                      <li>• We only collect data necessary for AI content transformation</li>
+                      <li>• Your input content is processed temporarily and never stored</li>
+                      <li>• We never use your content to train AI models or share with third parties</li>
+                      <li>• Generated content belongs to you completely</li>
+                      <li>• You control your data and can delete everything anytime</li>
                     </ul>
                   </div>
                 </div>

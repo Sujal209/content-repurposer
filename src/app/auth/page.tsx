@@ -116,8 +116,12 @@ export default function AuthPage() {
         >
           <Card className="shadow-xl border-0">
             <CardHeader className="text-center pb-6">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                <Sparkles className="h-8 w-8 text-white" />
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center p-2">
+                <img 
+                  src="/repurposemate-logo.png" 
+                  alt="ContentCraft logo" 
+                  className="w-full h-full object-contain filter brightness-110"
+                />
               </div>
               <CardTitle className="text-2xl font-bold text-heading">
                 {isLogin ? 'Welcome Back' : 'Create Account'}

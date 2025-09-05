@@ -37,7 +37,7 @@ const faqData: FAQItem[] = [
   {
     id: '1',
     question: 'How do I get started with ContentCraft?',
-    answer: 'Getting started is easy! Sign up for a free account, paste your long-form content into the dashboard, select your desired output formats (Twitter, LinkedIn, Instagram), and click Transform. Our AI will generate engaging social media posts optimized for each platform.',
+    answer: 'Getting started is easy! Sign up for a free account, paste your long-form content into the dashboard, select your desired output formats (Twitter Threads, LinkedIn Carousels, Instagram Reels), and click Transform. Our AI will generate engaging social media posts optimized for each platform.',
     category: 'Getting Started'
   },
   {
@@ -48,8 +48,8 @@ const faqData: FAQItem[] = [
   },
   {
     id: '3',
-    question: 'How many transformations do I get with each plan?',
-    answer: 'Free plan: 3 transformations per day. Pro plan: 200 transformations per day. Enterprise plan: 2000+ transformations per day with custom limits available.',
+    question: 'How many credits do I get with each plan?',
+    answer: 'Free plan: 3 credits per day. Pro plan: 200 credits per day. Enterprise plan: 2000+ credits per day with custom limits available. Each transformation typically uses 1-3 credits depending on the output format.',
     category: 'Billing'
   },
   {
@@ -61,7 +61,7 @@ const faqData: FAQItem[] = [
   {
     id: '5',
     question: 'Is there an API available for developers?',
-    answer: 'Yes! We provide a comprehensive REST API that allows you to integrate ContentCraft into your applications. Contact our support team for detailed information, code examples, and authentication details.',
+    answer: 'API access is currently available for Enterprise plans. Contact our support team for detailed information about API integration, authentication, and usage limits.',
     category: 'API'
   },
   {
@@ -91,7 +91,7 @@ const faqData: FAQItem[] = [
   {
     id: '10',
     question: 'What if I\'m not satisfied with the generated content?',
-    answer: 'If you\'re not happy with a transformation, you can regenerate it for free (doesn\'t count against your limit). We also offer a 30-day money-back guarantee for paid plans.',
+    answer: 'If you\'re not happy with a transformation, you can regenerate it using your available credits. You can also adjust your content preferences and try different settings to get better results.',
     category: 'Support'
   }
 ]
@@ -152,7 +152,7 @@ export default function HelpCenterPage() {
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
                 <HelpCircle className="h-4 w-4 text-white" />
               </div>
-              <h1 className="text-xl font-bold gradient-text">Help Center</h1>
+              <h1 className="text-xl font-bold gradient-text">ContentCraft</h1>
             </Link>
             
             <Button variant="outline" onClick={() => window.location.href = '/contact'}>
@@ -287,7 +287,7 @@ export default function HelpCenterPage() {
               {filteredFAQs.map((faq) => (
                 <Card key={faq.id} className="border border-border">
                   <CardHeader
-                    className="cursor-pointer hover:bg-gray-50 transition-colors"
+                    className="cursor-pointer hover:bg-surface/50 transition-colors"
                     onClick={() => toggleFAQ(faq.id)}
                   >
                     <div className="flex items-center justify-between">

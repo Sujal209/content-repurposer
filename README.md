@@ -1,28 +1,32 @@
 # ContentCraft - AI-Powered Content Repurposer
 
-🚀 **Transform your long-form content into viral social media posts with AI**
+🚀 **Transform your long-form content into engaging social media posts with AI**
 
 Perfect for indie makers, solopreneurs, and content creators who want to scale their content without hiring a team.
 
 ## ✨ Features
 
-- **Premium Landing Page** - Conversion-focused design with smooth animations
-- **Unified Auth System** - Seamless login/signup with Supabase
-- **AI-Powered Transformation** - Turn blog posts into Twitter threads, LinkedIn carousels, and Instagram stories
-- **Real-time Content Processing** - Lightning-fast AI transformations
-- **Responsive Design** - Perfect experience on all devices
-- **Protected Routes** - Secure access to authenticated content
-- **Copy & Export** - Easy sharing and downloading of generated content
+- **AI-Powered Content Transformation** - Turn blog posts, articles, and long-form content into platform-optimized social media posts
+- **3 Social Media Formats** - Twitter Threads, LinkedIn Carousels, and Instagram Reels
+- **Real-time Content Analysis** - Get readability scores, engagement metrics, and improvement tips as you type
+- **Content Preferences** - Customize tone, style, and format preferences for each platform
+- **Content Library** - Save and manage your generated content with search and filtering
+- **Usage Tracking** - Monitor your daily usage with clear limits and remaining credits
+- **Export & Share** - Copy to clipboard, download as files, or share directly
+- **Secure Authentication** - Built with Supabase for secure user management
+- **Responsive Design** - Works perfectly on desktop, tablet, and mobile devices
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: Next.js 14 (App Router)
+- **Frontend**: Next.js 15 (App Router)
 - **Styling**: Tailwind CSS v4
 - **Authentication**: Supabase Auth
-- **AI**: OpenAI GPT-4
+- **AI**: OpenAI GPT-4 via OpenRouter
+- **Database**: Supabase (PostgreSQL)
 - **Animations**: Framer Motion
 - **Language**: TypeScript
 - **Icons**: Lucide React
+- **UI Components**: Radix UI
 
 ## 🎨 Design System
 
@@ -89,29 +93,28 @@ Perfect for indie makers, solopreneurs, and content creators who want to scale t
 ### Supported Formats
 
 1. **Twitter Threads**
-   - 10 engaging tweets with hooks
-   - Strategic emoji usage
-   - Viral-ready format
-   - Call-to-action endings
+   - 5-15 engaging tweets with viral hooks
+   - Strategic emoji usage and hashtags
+   - Thread structure optimized for engagement
+   - Platform-specific character limits
 
 2. **LinkedIn Carousels**
    - 6-8 professional slides
-   - Business-focused content
-   - Actionable insights
-   - Statistics and data
+   - Business-focused content with actionable insights
+   - Professional tone and industry expertise
+   - Statistics and data-driven content
 
-3. **Instagram Stories**
-   - 5-7 visual story slides
-   - Interactive elements
-   - Engagement prompts
-   - Visual direction guides
+3. **Instagram Reels**
+   - Short-form video script format
+   - Visual storytelling elements
+   - Engagement prompts and calls-to-action
+   - Mobile-optimized content structure
 
-### AI Prompts
-Each format uses carefully crafted prompts that:
-- Understand platform-specific best practices
-- Maintain the author's voice and tone
-- Optimize for engagement and virality
-- Include platform-specific features (hashtags, mentions, etc.)
+### Content Analysis Features
+- **Readability Scoring** - Flesch Reading Ease scores and reading level assessment
+- **Engagement Metrics** - Question detection, emotional language analysis, action word identification
+- **Content Quality** - Sentence length analysis, passive voice detection, jargon identification
+- **Improvement Tips** - Real-time suggestions for better content optimization
 
 ## 📱 Responsive Design
 
@@ -125,22 +128,36 @@ Each format uses carefully crafted prompts that:
 ```
 src/
 ├── app/                 # Next.js App Router
-│   ├── api/            # API routes
+│   ├── api/            # API routes (transform, usage, history, etc.)
 │   ├── auth/           # Authentication pages
-│   ├── dashboard/      # Protected dashboard
-│   └── globals.css     # Global styles
+│   ├── dashboard/      # Main content transformation interface
+│   ├── history/        # Content library and history
+│   ├── settings/       # User settings and preferences
+│   ├── help/           # Help center and FAQ
+│   ├── contact/        # Contact form and support
+│   ├── privacy/        # Privacy policy
+│   ├── cookies/        # Cookie policy
+│   └── pricing/        # Pricing plans (coming soon)
 ├── components/         # Reusable components
+│   ├── content-analysis-display.tsx
+│   ├── content-preferences.tsx
+│   ├── content-preview-modal.tsx
+│   ├── interactive-demo.tsx
 │   └── ui/            # UI component library
 └── lib/               # Utilities and configurations
-    ├── auth-context.tsx
-    ├── supabase.ts
-    └── utils.ts
+    ├── auth-context-production.tsx
+    ├── content-analysis.ts
+    ├── prompt-engine.ts
+    ├── supabase-production.ts
+    └── openrouter-client.ts
 ```
 
 ### Key Files
 - `middleware.ts` - Route protection and auth handling
 - `src/app/api/transform/route.ts` - AI transformation endpoint
-- `src/lib/auth-context.tsx` - Authentication state management
+- `src/lib/prompt-engine.ts` - Advanced prompt engineering system
+- `src/lib/content-analysis.ts` - Content analysis and metrics
+- `src/lib/auth-context-production.tsx` - Production authentication context
 - `src/components/ui/` - Reusable UI components
 
 ## 🎨 Customization

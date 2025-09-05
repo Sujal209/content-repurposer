@@ -11,9 +11,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                <Sparkles className="h-4 w-4 text-white" />
-              </div>
+              <img 
+                src="/repurposemate-logo.png" 
+                alt="ContentCraft logo" 
+                className="w-8 h-8 object-contain drop-shadow-lg"
+              />
               <h3 className="text-lg font-bold text-heading">ContentCraft</h3>
             </div>
             <p className="text-sm text-muted max-w-xs">
@@ -21,17 +23,17 @@ export default function Footer() {
               Perfect for indie makers and content creators.
             </p>
             <div className="flex items-center gap-4">
-              <Link href="https://twitter.com/contentcraft" className="text-muted hover:text-primary transition-colors">
-                <Twitter className="h-4 w-4" />
-              </Link>
-              <Link href="https://linkedin.com/company/contentcraft" className="text-muted hover:text-primary transition-colors">
-                <Linkedin className="h-4 w-4" />
-              </Link>
-              <Link href="https://github.com/contentcraft/api" className="text-muted hover:text-primary transition-colors">
-                <Github className="h-4 w-4" />
-              </Link>
-              <Link href="/contact" className="text-muted hover:text-primary transition-colors">
-                <Mail className="h-4 w-4" />
+              <a href="https://twitter.com/contentcraft" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="ContentCraft on Twitter">
+                <Twitter className="h-4 w-4" aria-hidden="true" />
+              </a>
+              <a href="https://linkedin.com/company/contentcraft" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="ContentCraft on LinkedIn">
+                <Linkedin className="h-4 w-4" aria-hidden="true" />
+              </a>
+              <a href="https://github.com/contentcraft/api" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="ContentCraft on GitHub">
+                <Github className="h-4 w-4" aria-hidden="true" />
+              </a>
+              <Link href="/contact" className="text-muted hover:text-primary transition-colors" aria-label="Contact us">
+                <Mail className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -110,7 +112,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-1 text-sm text-muted">
             <span>Built with</span>
-            <Heart className="h-3 w-3 text-red-500" />
+            <Heart className="h-3 w-3 text-red-500" aria-hidden="true" />
             <span>for indie makers</span>
           </div>
         </div>
