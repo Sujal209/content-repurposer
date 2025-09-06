@@ -65,7 +65,6 @@ interface GeneratedContent {
 export default function Dashboard() {
   const { user, loading, signOut } = useProductionAuth()
   const router = useRouter()
-  const supabase = createProductionClient()
   const { toast } = useToast()
   const [inputContent, setInputContent] = useState('')
   const [selectedFormats, setSelectedFormats] = useState<string[]>([])
@@ -105,6 +104,7 @@ export default function Dashboard() {
   useEffect(() => {
     const loadUsage = async () => {
       if (!user) return
+      const supabase = createProductionClient()
       const meta = (user.user_metadata || {}) as Record<string, any>
       const p = (meta.plan as Plan) || 'free'
       setPlan(p)
@@ -118,7 +118,7 @@ export default function Dashboard() {
       setUsedToday(data?.count ?? 0)
     }
     loadUsage()
-  }, [user, supabase])
+  }, [user])
 
   const handleSignOut = async () => {
     await signOut()

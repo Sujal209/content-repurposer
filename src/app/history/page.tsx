@@ -73,7 +73,6 @@ const getPlatformIcon = (contentType: string) => {
 export default function HistoryPage() {
   const { user, loading, signOut } = useProductionAuth()
   const router = useRouter()
-  const supabase = useMemo(() => createProductionClient(), [])
   const channelRef = useRef<any>(null)
 
   const [searchQuery, setSearchQuery] = useState('')
@@ -126,6 +125,7 @@ export default function HistoryPage() {
     setError(null)
 
     try {
+      const supabase = createProductionClient()
       let query = supabase
         .from('content_history')
         .select('*')
@@ -164,7 +164,7 @@ export default function HistoryPage() {
     } finally {
       setIsLoading(false)
     }
-  }, [user, searchQuery, contentType, dateRange, supabase])
+  }, [user, searchQuery, contentType, dateRange])
 
   // Function to refresh content
   const refreshContent = async (force = false) => {
@@ -194,6 +194,7 @@ export default function HistoryPage() {
       
       // Fallback to direct Supabase query if API fails
       console.warn('API route failed, falling back to direct Supabase query')
+      const supabase = createProductionClient()
       const { data, error } = await supabase
         .from('content_history')
         .select('id, title, content, content_type, created_at')
@@ -211,7 +212,8 @@ export default function HistoryPage() {
       console.error('Failed to fetch history:', err)
       // Final fallback to direct query
       try {
-        const { data, error } = await supabase
+        const fallbackSupabase = createProductionClient()
+        const { data, error } = await fallbackSupabase
           .from('content_history')
           .select('id, title, content, content_type, created_at')
           .eq('user_id', user?.id)
@@ -247,6 +249,7 @@ export default function HistoryPage() {
 
     // Clean up any existing channel first
     if (channelRef.current) {
+      const supabase = createProductionClient()
       supabase.removeChannel(channelRef.current)
       channelRef.current = null
     }
@@ -256,6 +259,7 @@ export default function HistoryPage() {
     
     if (ENABLE_REALTIME) {
       try {
+        const supabase = createProductionClient()
         const channel = supabase
           .channel('content_history_changes')
           .on('postgres_changes', { 
@@ -305,6 +309,7 @@ export default function HistoryPage() {
 
     return () => {
       if (channelRef.current) {
+        const supabase = createProductionClient()
         supabase.removeChannel(channelRef.current)
         channelRef.current = null
       }
