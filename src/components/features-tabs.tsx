@@ -257,15 +257,15 @@ export default function FeaturesTabs() {
                         )}
 
                         {/* Quick Demo for Context-Aware */}
-                        {feature.quickDemo && (
+                        {(feature as any).quickDemo && (
                           <div>
                             <h4 className="font-bold text-white mb-4 text-lg">Quick Example:</h4>
                             <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-4 rounded-xl border border-blue-500/20 mb-4">
                               <div className="text-sm text-blue-300 mb-2 font-medium">Input:</div>
-                              <div className="text-white font-medium">{feature.quickDemo.input}</div>
+                              <div className="text-white font-medium">{(feature as any).quickDemo.input}</div>
                             </div>
                             <div className="space-y-3">
-                              {Object.entries(feature.quickDemo.outputs).map(([platform, output]) => (
+                              {Object.entries((feature as any).quickDemo.outputs).map(([platform, output]: [string, string]) => (
                                 <div key={platform} className="flex items-start gap-3 p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
                                   <div className="flex-shrink-0 mt-0.5">
                                     {platform === 'twitter' && <Twitter className="h-5 w-5 text-blue-400" />}
@@ -280,11 +280,11 @@ export default function FeaturesTabs() {
                         )}
 
                         {/* Platform Highlights */}
-                        {feature.platformHighlights && (
+                        {(feature as any).platformHighlights && (
                           <div>
                             <h4 className="font-bold text-white mb-4 text-lg">Platform Highlights:</h4>
                             <div className="space-y-4">
-                              {feature.platformHighlights.map((platform, i) => (
+                              {(feature as any).platformHighlights.map((platform: any, i: number) => (
                                 <div key={i} className="bg-gradient-to-r from-gray-800/50 to-gray-700/50 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all">
                                   <div className="flex items-center justify-between mb-2">
                                     <div className="flex items-center gap-3">
@@ -304,11 +304,11 @@ export default function FeaturesTabs() {
                           </div>
                         )}
 
-                        {feature.stats && (
+                        {(feature as any).stats && (
                           <div>
                             <h4 className="font-semibold text-heading mb-3 text-sm sm:text-base">Performance Impact:</h4>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4">
-                              {feature.stats.map((stat, i) => (
+                              {(feature as any).stats.map((stat: string, i: number) => (
                                 <motion.div 
                                   key={i} 
                                   initial={{ opacity: 0, scale: 0.8 }}
@@ -324,11 +324,11 @@ export default function FeaturesTabs() {
                         )}
 
                         {/* Simple Workflow */}
-                        {feature.simpleWorkflow && (
+                        {(feature as any).simpleWorkflow && (
                           <div>
                             <h4 className="font-bold text-white mb-3 sm:mb-4 text-base sm:text-lg">Simple Workflow:</h4>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                              {feature.simpleWorkflow.map((item, i) => (
+                              {(feature as any).simpleWorkflow.map((item: any, i: number) => (
                                 <div key={i} className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-3 sm:p-4 rounded-xl border border-blue-500/20 hover:border-blue-400/40 transition-all">
                                   <div className="flex items-center gap-3 mb-2">
                                     <span className="text-xl sm:text-2xl">{item.icon}</span>
@@ -342,11 +342,11 @@ export default function FeaturesTabs() {
                         )}
 
                         {/* Growth Features */}
-                        {feature.growthFeatures && (
+                        {(feature as any).growthFeatures && (
                           <div>
                             <h4 className="font-bold text-white mb-4 text-lg">Growth Features:</h4>
                             <div className="space-y-3">
-                              {feature.growthFeatures.map((growthFeature, i) => (
+                              {(feature as any).growthFeatures.map((growthFeature: any, i: number) => (
                                 <div key={i} className="bg-gradient-to-r from-gray-800/50 to-gray-700/50 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all">
                                   <div className="flex items-center gap-3 mb-2">
                                     <span className="text-xl">{growthFeature.icon}</span>
@@ -359,20 +359,20 @@ export default function FeaturesTabs() {
                           </div>
                         )}
 
-                        {feature.timeComparison && (
+                        {(feature as any).timeComparison && (
                           <div>
                             <h4 className="font-semibold text-heading mb-3">Time Comparison:</h4>
                             <div className="space-y-3">
                               <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg border border-red-200">
                                 <span className="text-red-700">Manual Process:</span>
-                                <span className="font-bold text-red-800">{feature.timeComparison.manual}</span>
+                                <span className="font-bold text-red-800">{(feature as any).timeComparison.manual}</span>
                               </div>
                               <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg border border-green-200">
                                 <span className="text-green-700">ContentCraft:</span>
-                                <span className="font-bold text-green-800">{feature.timeComparison.contentcraft}</span>
+                                <span className="font-bold text-green-800">{(feature as any).timeComparison.contentcraft}</span>
                               </div>
                               <div className="text-center p-2 bg-blue-50 rounded-lg border border-blue-200">
-                                <span className="text-blue-700 font-semibold">Result: {feature.timeComparison.savings}</span>
+                                <span className="text-blue-700 font-semibold">Result: {(feature as any).timeComparison.savings}</span>
                               </div>
                             </div>
                           </div>
@@ -381,19 +381,19 @@ export default function FeaturesTabs() {
 
                       {/* Examples */}
                       <div className="space-y-6">
-                        {feature.example && (
+                        {(feature as any).example && (
                           <div>
                             <h4 className="font-semibold text-heading mb-3">Example Transformation:</h4>
                             <div className="space-y-4">
                               <div className="p-4 bg-gray-50 rounded-lg border">
                                 <div className="text-sm font-medium text-gray-600 mb-2">Input:</div>
-                                <div className="text-gray-800">{feature.example.input}</div>
+                                <div className="text-gray-800">{(feature as any).example.input}</div>
                               </div>
                               <div className="text-center">
                                 <ArrowRight className="h-6 w-6 mx-auto text-purple-600" />
                               </div>
                               <div className="space-y-3">
-                                {Object.entries(feature.example.outputs).map(([platform, output]) => (
+                                {Object.entries((feature as any).example.outputs).map(([platform, output]: [string, string]) => (
                                   <div key={platform} className="p-3 bg-blue-50 rounded-lg border border-blue-200">
                                     <div className="text-sm font-medium text-blue-600 mb-1 capitalize">{platform}:</div>
                                     <div className="text-blue-800">{output}</div>
@@ -404,11 +404,11 @@ export default function FeaturesTabs() {
                           </div>
                         )}
 
-                        {feature.examples && (
+                        {(feature as any).examples && (
                           <div>
                             <h4 className="font-semibold text-heading mb-3">Content Examples:</h4>
                             <div className="space-y-2">
-                              {feature.examples.map((example, i) => (
+                              {(feature as any).examples.map((example: string, i: number) => (
                                 <div key={i} className="p-3 bg-surface/30 rounded-lg border text-sm text-foreground">
                                   {example}
                                 </div>
@@ -417,11 +417,11 @@ export default function FeaturesTabs() {
                           </div>
                         )}
 
-                        {feature.format && (
+                        {(feature as any).format && (
                           <div>
                             <h4 className="font-semibold text-heading mb-3">Format Structure:</h4>
                             <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-                              <div className="text-purple-800">{feature.format}</div>
+                              <div className="text-purple-800">{(feature as any).format}</div>
                             </div>
                           </div>
                         )}
