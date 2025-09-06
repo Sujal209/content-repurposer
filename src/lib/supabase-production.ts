@@ -238,11 +238,18 @@ function startSessionMonitoring(client: SupabaseClient): void {
  */
 export function createProductionClient(): SupabaseClient {
   if (!productionClient) {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    
+    if (!supabaseUrl || !supabaseKey) {
+      throw new Error('Missing Supabase environment variables. Please check NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY')
+    }
+    
     console.log('🏭 Creating production Supabase client with rate limit protection...')
     
     productionClient = createBrowserClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      supabaseUrl,
+      supabaseKey,
       {
         auth: {
           // Enable session persistence but disable auto-refresh
