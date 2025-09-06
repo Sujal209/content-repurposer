@@ -98,7 +98,7 @@ export default function SettingsPage() {
       });
 
       if (response.ok) {
-        setProfile(prev => ({ ...prev, full_name: fullName }));
+        setProfile((prev: any) => ({ ...prev, full_name: fullName }));
         toast({ type: 'success', title: 'Profile updated successfully' });
       } else {
         const errorData = await response.json();
