@@ -1,6 +1,6 @@
 /**
- * OpenRouter API Client for Mistral Small 3.2 24B
- * Cost-effective alternative to OpenAI with excellent performance
+ * OpenRouter API Client for Mistral Small 3.2 24B (Free Tier)
+ * Free alternative to OpenAI with excellent performance
  */
 
 export interface OpenRouterMessage {
@@ -28,7 +28,7 @@ export interface OpenRouterResponse {
 export class OpenRouterClient {
   private apiKey: string
   private baseUrl = 'https://openrouter.ai/api/v1'
-  private model = 'mistralai/mistral-7b-instruct' // Mistral 7B Instruct - reliable and cost-effective
+  private model = 'mistralai/mistral-small-3.2-24b-instruct:free' // Mistral Small 3.2 24B - free tier
 
   constructor(apiKey: string) {
     this.apiKey = apiKey
@@ -96,7 +96,7 @@ export class OpenRouterClient {
   // Get model information and pricing
   static async getModelInfo(): Promise<any> {
     try {
-      const response = await fetch('https://openrouter.ai/api/v1/models/mistralai/mistral-7b-instruct')
+      const response = await fetch('https://openrouter.ai/api/v1/models/mistralai/mistral-small-3.2-24b-instruct:free')
       return response.json()
     } catch (error) {
       console.error('Failed to fetch model info:', error)
@@ -106,11 +106,8 @@ export class OpenRouterClient {
 
   // Estimate cost for a request
   static estimateCost(inputTokens: number, outputTokens: number): number {
-    // Mistral Small 3.2 24B pricing (approximate)
-    const inputCostPer1k = 0.0006 // $0.0006 per 1K input tokens
-    const outputCostPer1k = 0.0018 // $0.0018 per 1K output tokens
-    
-    return (inputTokens / 1000) * inputCostPer1k + (outputTokens / 1000) * outputCostPer1k
+    // Mistral Small 3.2 24B Free tier - no cost
+    return 0 // Free tier has no cost
   }
 }
 
