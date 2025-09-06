@@ -13,23 +13,23 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <img 
                 src="/repurposemate-logo.png" 
-                alt="ContentCraft logo" 
+                alt="repuposemate logo" 
                 className="w-8 h-8 object-contain drop-shadow-lg"
               />
-              <h3 className="text-lg font-bold text-heading">ContentCraft</h3>
+              <h3 className="text-lg font-bold text-heading">repuposemate</h3>
             </div>
             <p className="text-sm text-muted max-w-xs">
               Transform your long-form content into engaging social media posts with AI. 
               Perfect for indie makers and content creators.
             </p>
             <div className="flex items-center gap-4">
-              <a href="https://twitter.com/contentcraft" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="ContentCraft on Twitter">
+              <a href="https://twitter.com/repuposemate" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="repuposemate on Twitter">
                 <Twitter className="h-4 w-4" aria-hidden="true" />
               </a>
-              <a href="https://linkedin.com/company/contentcraft" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="ContentCraft on LinkedIn">
+              <a href="https://linkedin.com/company/repuposemate" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="repuposemate on LinkedIn">
                 <Linkedin className="h-4 w-4" aria-hidden="true" />
               </a>
-              <a href="https://github.com/contentcraft/api" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="ContentCraft on GitHub">
+              <a href="https://github.com/repuposemate/api" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="repuposemate on GitHub">
                 <Github className="h-4 w-4" aria-hidden="true" />
               </a>
               <Link href="/contact" className="text-muted hover:text-primary transition-colors" aria-label="Contact us">
@@ -108,7 +108,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-border mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-sm text-muted">
-            © {new Date().getFullYear()} ContentCraft. All rights reserved.
+            © {new Date().getFullYear()} repuposemate. All rights reserved.
           </div>
           <div className="flex items-center gap-1 text-sm text-muted">
             <span>Built with</span>

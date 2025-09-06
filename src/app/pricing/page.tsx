@@ -31,7 +31,7 @@ const pricingPlans = [
     name: 'Free',
     price: 0,
     period: 'month',
-    description: 'Perfect for trying out ContentCraft',
+    description: 'Perfect for trying out repuposemate',
     icon: Sparkles,
     color: 'from-gray-500 to-gray-600',
     buttonText: 'Get Started Free',
@@ -131,10 +131,10 @@ export default function PricingPage() {
             <div className="flex items-center gap-3">
               <img 
                 src="/repurposemate-logo.png" 
-                alt="ContentCraft logo" 
+                alt="repuposemate logo" 
                 className="w-8 h-8 object-contain drop-shadow-lg"
               />
-              <h1 className="text-xl font-bold gradient-text">ContentCraft</h1>
+              <h1 className="text-xl font-bold gradient-text">repuposemate</h1>
             </div>
             
             <div className="flex items-center gap-2 sm:gap-4">
@@ -455,7 +455,7 @@ export default function PricingPage() {
                   Ready to Transform Your Content?
                 </h2>
                 <p className="text-muted mb-8 max-w-md mx-auto">
-                  Join content creators who are transforming their social media strategy with ContentCraft
+                  Join content creators who are transforming their social media strategy with repuposemate
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button size="lg" onClick={() => router.push('/auth')}>

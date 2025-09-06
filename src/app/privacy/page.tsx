@@ -173,7 +173,7 @@ export default function PrivacyPolicyPage() {
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
                 <Shield className="h-4 w-4 text-white" />
               </div>
-              <h1 className="text-xl font-bold gradient-text">ContentCraft</h1>
+              <h1 className="text-xl font-bold gradient-text">repuposemate</h1>
             </Link>
             
             <div className="flex items-center gap-4">
@@ -204,7 +204,7 @@ export default function PrivacyPolicyPage() {
                 Privacy Policy
               </h1>
               <p className="text-xl text-muted max-w-2xl mx-auto mb-6">
-                Your privacy is our priority. This policy explains how ContentCraft collects, uses, and protects your data when transforming content with AI.
+                Your privacy is our priority. This policy explains how repuposemate collects, uses, and protects your data when transforming content with AI.
               </p>
               <div className="flex items-center justify-center gap-4 text-sm text-muted">
                 <span>Last updated: January 28, 2025</span>

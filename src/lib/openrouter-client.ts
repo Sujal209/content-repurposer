@@ -49,8 +49,8 @@ export class OpenRouterClient {
       headers: {
         'Authorization': `Bearer ${this.apiKey}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://contentcraft.ai', // Optional: for tracking
-        'X-Title': 'ContentCraft' // Optional: for tracking
+        'HTTP-Referer': 'https://repuposemate.ai', // Optional: for tracking
+        'X-Title': 'repuposemate' // Optional: for tracking
       },
       body: JSON.stringify({
         model: this.model,

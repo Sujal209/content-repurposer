@@ -59,10 +59,10 @@ export default function LandingPage() {
           >
             <img 
               src="/repurposemate-logo.png" 
-              alt="ContentCraft logo" 
+              alt="repuposemate logo" 
               className="w-10 h-10 sm:w-12 sm:h-12 object-contain filter brightness-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
             />
-            <span className="text-xl sm:text-2xl font-bold gradient-text">ContentCraft</span>
+            <span className="text-xl sm:text-2xl font-bold gradient-text">repuposemate</span>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -203,7 +203,7 @@ export default function LandingPage() {
               <span className="text-yellow-300">★★★★★</span>
             </div>
             <p className="text-base text-gray-100 italic mb-4 text-center leading-relaxed font-medium">
-              "ContentCraft transformed how I create social media content. I can now turn one blog post into multiple platform-optimized posts in seconds, saving me hours every week!"
+              "repuposemate transformed how I create social media content. I can now turn one blog post into multiple platform-optimized posts in seconds, saving me hours every week!"
             </p>
             <div className="flex items-center justify-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
@@ -243,7 +243,7 @@ export default function LandingPage() {
           <h2 className="text-4xl font-bold mb-4 text-heading">Powerful Features for Content Creators</h2>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto">
             Everything you need to transform your content strategy. 
-            Explore our features to see how ContentCraft can revolutionize your workflow.
+            Explore our features to see how repuposemate can revolutionize your workflow.
           </p>
         </motion.div>
 
@@ -275,7 +275,7 @@ export default function LandingPage() {
               <h2 className="text-4xl font-bold mb-6 text-white">The Content Creation Problem</h2>
                           <p className="text-xl text-gray-200 mb-8 font-medium">
               You create amazing long-form content, but adapting it for different social media platforms is time-consuming. 
-              ContentCraft understands your voice and transforms your content into platform-optimized posts automatically.
+              repuposemate understands your voice and transforms your content into platform-optimized posts automatically.
             </p>
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (

@@ -1,4 +1,4 @@
-# ContentCraft - AI-Powered Content Repurposer
+# repuposemate - AI-Powered Content Repurposer
 
 🚀 **Transform your long-form content into engaging social media posts with AI**
 

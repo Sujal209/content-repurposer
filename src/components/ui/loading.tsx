@@ -36,7 +36,7 @@ export function FullPageLoading() {
         <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center animate-pulse">
           <Sparkles className="h-8 w-8 text-white" />
         </div>
-        <h2 className="text-xl font-semibold gradient-text mb-2">ContentCraft</h2>
+        <h2 className="text-xl font-semibold gradient-text mb-2">repuposemate</h2>
         <Loading text="Loading your workspace..." />
       </motion.div>
     </div>

@@ -106,7 +106,7 @@ export default function AuthPage() {
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center p-2">
                 <img 
                   src="/repurposemate-logo.png" 
-                  alt="ContentCraft logo" 
+                  alt="repuposemate logo" 
                   className="w-full h-full object-contain filter brightness-110"
                 />
               </div>
@@ -115,7 +115,7 @@ export default function AuthPage() {
               </CardTitle>
               <CardDescription className="text-gray-600">
                 {isLogin 
-                  ? 'Sign in to your ContentCraft account' 
+                  ? 'Sign in to your repuposemate account' 
                   : 'Join thousands of creators transforming content'
                 }
               </CardDescription>
