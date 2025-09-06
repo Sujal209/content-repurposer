@@ -19,9 +19,7 @@ export default function AuthPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [info, setInfo] = useState('')
-  const [useMagicLink, setUseMagicLink] = useState(false)
-  
-  const { signIn, signUp, signInWithProvider, signInWithMagicLink } = useProductionAuth()
+  const { signIn, signUp, signInWithProvider } = useProductionAuth()
   const { clearSession } = useAuthRecovery()
   const router = useRouter()
 
@@ -38,12 +36,10 @@ export default function AuthPage() {
       return
     }
 
-    if (!useMagicLink) {
-      if (!password.trim()) {
-        setError('Password is required')
-        setLoading(false)
-        return
-      }
+    if (!password.trim()) {
+      setError('Password is required')
+      setLoading(false)
+      return
     }
 
     // Email format validation
@@ -55,30 +51,21 @@ export default function AuthPage() {
     }
 
     // Password strength validation for signup
-    if (!useMagicLink && !isLogin && password.length < 8) {
+    if (!isLogin && password.length < 8) {
       setError('Password must be at least 8 characters long')
       setLoading(false)
       return
     }
 
     try {
-      if (useMagicLink && isLogin) {
-        const { error } = await signInWithMagicLink(email.trim())
-        if (error) {
-          setError(error)
-        } else {
-          setInfo('Magic link sent! Check your email to continue.')
-        }
-      } else {
-        const { error } = isLogin 
-          ? await signIn(email.trim(), password)
-          : await signUp(email.trim(), password)
+      const { error } = isLogin 
+        ? await signIn(email.trim(), password)
+        : await signUp(email.trim(), password)
 
-        if (error) {
-          setError(error)
-        } else {
-          router.push('/dashboard')
-        }
+      if (error) {
+        setError(error)
+      } else {
+        router.push('/dashboard')
       }
     } catch (err) {
       setError('An unexpected error occurred')
@@ -168,21 +155,7 @@ export default function AuthPage() {
                 </div>
               </div>
 
-              {/* Magic Link Toggle */}
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted">Use magic link (email only)</span>
-                <button
-                  type="button"
-                  onClick={() => setUseMagicLink((v) => !v)}
-                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    useMagicLink ? 'bg-primary' : 'bg-gray-200'
-                  }`}
-                >
-                  <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                    useMagicLink ? 'translate-x-6' : 'translate-x-1'
-                  }`} />
-                </button>
-              </div>
+
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Email Input */}
@@ -205,7 +178,6 @@ export default function AuthPage() {
                 </div>
 
                 {/* Password Input */}
-                {!useMagicLink && (
                 <div className="space-y-2">
                   <label htmlFor="password" className="text-sm font-medium text-foreground">
                     Password
@@ -231,7 +203,6 @@ export default function AuthPage() {
                     </button>
                   </div>
                 </div>
-                )}
 
                 {/* Error Message */}
                 {error && (
@@ -269,7 +240,7 @@ export default function AuthPage() {
                       {isLogin ? 'Signing in...' : 'Creating account...'}
                     </div>
                   ) : (
-                    useMagicLink && isLogin ? 'Send Magic Link' : isLogin ? 'Sign In' : 'Create Account'
+                    isLogin ? 'Sign In' : 'Create Account'
                   )}
                 </Button>
               </form>
