@@ -117,7 +117,7 @@ const toneOptions = [
 ]
 
 export default function ContentPreferences({ preferences, onPreferencesChange, selectedFormats, inputContent }: ContentPreferencesProps) {
-  const [isExpanded, setIsExpanded] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(true)
   const [autoDetected, setAutoDetected] = useState<{ contentType?: ContentType; tone?: Tone }>({})  
   
   // Check for reduced motion preference and maintain as a ref to prevent re-renders
@@ -251,45 +251,19 @@ export default function ContentPreferences({ preferences, onPreferencesChange, s
               </div>
             </div>
           </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="text-muted hover:text-foreground hover:bg-[#E6F0FF] hover:shadow-md transition-all duration-300 rounded-xl px-3 sm:px-4 py-2 focus:ring-2 focus:ring-[#0B67FF] focus:ring-offset-2 focus:outline-none"
-            aria-expanded={isExpanded}
-            aria-controls="content-preferences-panel"
-            aria-label={isExpanded ? "Hide advanced content preferences" : "Show advanced content preferences"}
-          >
-            {isExpanded ? (
-              <>
-                <ChevronUp className="h-4 w-4 mr-2" />
-                <span className="hidden sm:inline">Less Options</span>
-              </>
-            ) : (
-              <>
-                <ChevronDown className="h-4 w-4 mr-2" />
-                <span className="hidden sm:inline">More Options</span>
-              </>
-            )}
-          </Button>
+
         </div>
         <CardDescription className="text-sm sm:text-base text-gray-600">
           Fine-tune how your content is transformed for each platform with AI-powered insights
         </CardDescription>
       </CardHeader>
 
-      <AnimatePresence>
-        {isExpanded && (
-          <motion.div
-            id="content-preferences-panel"
-            initial={prefersReducedMotion.current ? undefined : { height: 0, opacity: 0 }}
-            animate={prefersReducedMotion.current ? undefined : { height: 'auto', opacity: 1 }}
-            exit={prefersReducedMotion.current ? undefined : { height: 0, opacity: 0 }}
-            transition={{ duration: prefersReducedMotion.current ? 0 : 0.2 }}
-            className="overflow-hidden"
-            role="group"
-            aria-label="Advanced content preferences options"
-          >
+      <div
+        id="content-preferences-panel"
+        className=""
+        role="group"
+        aria-label="Content preferences options"
+      >
             <CardContent className="space-y-8 pt-6">
               
               {/* Content Type Selection */}
@@ -650,9 +624,7 @@ export default function ContentPreferences({ preferences, onPreferencesChange, s
               </div>
 
             </CardContent>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </div>
       
       {/* Live region for accessibility announcements */}
       <div 

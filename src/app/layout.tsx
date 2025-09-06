@@ -57,15 +57,21 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZC3XRW92VY"></script>
+        {/* Google Analytics - Deferred */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-ZC3XRW92VY');
+              setTimeout(() => {
+                const script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZC3XRW92VY';
+                document.head.appendChild(script);
+                
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-ZC3XRW92VY');
+              }, 2000);
             `,
           }}
         />
@@ -136,7 +142,19 @@ export default function RootLayout({
             <AuthRecoveryHandler />
           </ProductionAuthProvider>
         </ToastProvider>
-        <Analytics />
+        {/* Defer Vercel Analytics */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              setTimeout(() => {
+                const script = document.createElement('script');
+                script.src = '/_vercel/insights/script.js';
+                script.defer = true;
+                document.head.appendChild(script);
+              }, 3000);
+            `,
+          }}
+        />
       </body>
     </html>
   );

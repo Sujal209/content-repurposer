@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "dev:stable": "node scripts/dev-stable.js",
-    "build": "next build",
+    "build": "cross-env NODE_NO_WARNINGS=1 next build",
+    "build:optimized": "node scripts/optimize-build.js",
     "start": "next start",
     "lint": "eslint",
     "pre-deploy": "node scripts/pre-deployment-check.js",
@@ -52,6 +53,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
     "tailwindcss": "^4",
