@@ -265,14 +265,14 @@ export default function FeaturesTabs() {
                               <div className="text-white font-medium">{(feature as any).quickDemo.input}</div>
                             </div>
                             <div className="space-y-3">
-                              {Object.entries((feature as any).quickDemo.outputs).map(([platform, output]: [string, string]) => (
+                              {Object.entries((feature as any).quickDemo.outputs).map(([platform, output]) => (
                                 <div key={platform} className="flex items-start gap-3 p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
                                   <div className="flex-shrink-0 mt-0.5">
                                     {platform === 'twitter' && <Twitter className="h-5 w-5 text-blue-400" />}
                                     {platform === 'linkedin' && <Linkedin className="h-5 w-5 text-blue-600" />}
                                     {platform === 'instagram' && <Instagram className="h-5 w-5 text-pink-500" />}
                                   </div>
-                                  <span className="text-gray-200 text-sm leading-relaxed">{output}</span>
+                                  <span className="text-gray-200 text-sm leading-relaxed">{String(output)}</span>
                                 </div>
                               ))}
                             </div>
@@ -393,10 +393,10 @@ export default function FeaturesTabs() {
                                 <ArrowRight className="h-6 w-6 mx-auto text-purple-600" />
                               </div>
                               <div className="space-y-3">
-                                {Object.entries((feature as any).example.outputs).map(([platform, output]: [string, string]) => (
+                                {Object.entries((feature as any).example.outputs).map(([platform, output]) => (
                                   <div key={platform} className="p-3 bg-blue-50 rounded-lg border border-blue-200">
                                     <div className="text-sm font-medium text-blue-600 mb-1 capitalize">{platform}:</div>
-                                    <div className="text-blue-800">{output}</div>
+                                    <div className="text-blue-800">{String(output)}</div>
                                   </div>
                                 ))}
                               </div>
