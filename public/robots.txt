@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Allow: /auth
+Allow: /help
+Allow: /contact
+Allow: /privacy
+Allow: /terms
+Allow: /cookies
+Allow: /pricing
+
+Disallow: /dashboard
+Disallow: /settings
+Disallow: /history
+Disallow: /api/
+
+Sitemap: https://repurposemate.ai/sitemap.xml

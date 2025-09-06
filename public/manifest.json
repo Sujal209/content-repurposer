@@ -1,0 +1,21 @@
+{
+  "name": "RepurposeMate - AI Content Repurposer",
+  "short_name": "RepurposeMate",
+  "description": "Transform your long-form content into engaging social media posts with AI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1419",
+  "theme_color": "#00d4ff",
+  "icons": [
+    {
+      "src": "/repurposemate-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/repurposemate-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
