@@ -1,5 +1,9 @@
 'use client';
 
+// Force dynamic rendering to avoid build-time issues
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

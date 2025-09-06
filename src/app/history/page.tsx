@@ -1,5 +1,9 @@
 'use client'
 
+// Force dynamic rendering to avoid build-time issues
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { 

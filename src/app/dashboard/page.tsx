@@ -1,5 +1,9 @@
 'use client'
 
+// Force dynamic rendering to avoid build-time Supabase issues
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 

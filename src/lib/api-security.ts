@@ -5,7 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { getSecurityHeaders, getCorsHeaders, SECURITY_CONFIG } from './security-config'
-import { enhancedRateLimit, validateOrigin } from './auth-utils'
+import { checkRateLimit } from './auth-utils'
 
 /**
  * Security middleware for API routes
@@ -28,14 +28,15 @@ export function withApiSecurity(handler: (req: NextRequest) => Promise<NextRespo
       // 2. Rate limiting
       const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 
                  request.headers.get('x-real-ip') || 
-                 request.ip || 'unknown'
+                 'unknown'
       
       const rateLimitKey = `api:${ip}:${request.nextUrl.pathname}`
-      const { allowed, remainingAttempts, blocked } = enhancedRateLimit(
+      const { allowed, remainingAttempts } = checkRateLimit(
         rateLimitKey,
         SECURITY_CONFIG.RATE_LIMITS.API_REQUESTS.max,
         SECURITY_CONFIG.RATE_LIMITS.API_REQUESTS.window
       )
+      const blocked = false
 
       if (!allowed) {
         return new NextResponse(JSON.stringify({ 
@@ -49,7 +50,7 @@ export function withApiSecurity(handler: (req: NextRequest) => Promise<NextRespo
             'X-RateLimit-Remaining': '0',
             'Retry-After': Math.ceil(SECURITY_CONFIG.RATE_LIMITS.API_REQUESTS.window / 1000).toString(),
             ...getSecurityHeaders(),
-            ...getCorsHeaders(origin)
+            ...getCorsHeaders(origin || undefined)
           }
         })
       }
@@ -59,7 +60,7 @@ export function withApiSecurity(handler: (req: NextRequest) => Promise<NextRespo
 
       // 4. Add security headers to response
       const securityHeaders = getSecurityHeaders()
-      const corsHeaders = getCorsHeaders(origin)
+      const corsHeaders = getCorsHeaders(origin || undefined)
       
       Object.entries(securityHeaders).forEach(([key, value]) => {
         response.headers.set(key, value)
@@ -83,7 +84,7 @@ export function withApiSecurity(handler: (req: NextRequest) => Promise<NextRespo
         headers: {
           'Content-Type': 'application/json',
           ...getSecurityHeaders(),
-          ...getCorsHeaders(request.headers.get('origin'))
+          ...getCorsHeaders(request.headers.get('origin') || undefined)
         }
       })
     }
@@ -121,7 +122,7 @@ export function createSecureResponse(
     status,
     headers: {
       ...getSecurityHeaders(),
-      ...getCorsHeaders(origin)
+      ...getCorsHeaders(origin || undefined)
     }
   })
 }
@@ -140,7 +141,7 @@ export function createErrorResponse(
       status,
       headers: {
         ...getSecurityHeaders(),
-        ...getCorsHeaders(origin)
+        ...getCorsHeaders(origin || undefined)
       }
     }
   )
