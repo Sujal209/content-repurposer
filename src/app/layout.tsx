@@ -4,6 +4,7 @@ import "./globals.css";
 import { ProductionAuthProvider } from "@/lib/auth-context-production";
 import { ToastProvider } from "@/components/ui/toast";
 import { AuthRecoveryHandler } from "@/components/auth-recovery";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -56,6 +57,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZC3XRW92VY"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-ZC3XRW92VY');
+            `,
+          }}
+        />
         {/* Suppress preload warnings in development */}
         {process.env.NODE_ENV === 'development' && (
           <script
@@ -123,6 +136,7 @@ export default function RootLayout({
             <AuthRecoveryHandler />
           </ProductionAuthProvider>
         </ToastProvider>
+        <Analytics />
       </body>
     </html>
   );

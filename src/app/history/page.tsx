@@ -22,8 +22,7 @@ import {
   RefreshCw,
   Search,
   Share2,
-  CheckSquare,
-  Square,
+
   Filter,
   SortAsc,
   SortDesc
@@ -33,8 +32,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
-import { PaginatedList, InfiniteScroll } from '@/components/ui/pagination'
-import { BulkActions, SelectableItem, useBulkSelection } from '@/components/bulk-actions'
+
+
 import { ContentPreviewModal } from '@/components/content-preview-modal'
 import { ShareContentModal } from '@/components/share-content'
 import { ConfirmModal } from '@/components/ui/modal'
@@ -100,8 +99,7 @@ export default function HistoryPage() {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState<string | null>(null)
   const [sortBy, setSortBy] = useState<'date' | 'title' | 'type'>('date')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc')
-  const [usePagination, setUsePagination] = useState(true)
-  const [itemsPerPage, setItemsPerPage] = useState(12)
+
 
   useEffect(() => {
     if (!loading && !user) {
@@ -109,14 +107,10 @@ export default function HistoryPage() {
     }
   }, [loading, user, router])
 
-  // Debounce search and fetch content with new filtering
+  // Fetch content when filters change (not search)
   useEffect(() => {
-    const timer = setTimeout(() => {
-      fetchContent()
-    }, 300)
-
-    return () => clearTimeout(timer)
-  }, [searchQuery, contentType, dateRange])
+    fetchContent()
+  }, [contentType, dateRange])
 
   const fetchContent = useCallback(async () => {
     if (!user) return
@@ -404,9 +398,6 @@ export default function HistoryPage() {
 
   // For backward compatibility
   const filteredContent = filteredAndSortedContent
-  
-  // Bulk selection (after filteredContent is defined)
-  const { selectedItems, selectAll, deselectAll, toggleSelect, isSelected } = useBulkSelection(filteredContent)
 
   const deleteContent = async (id: string) => {
     try {
@@ -421,10 +412,7 @@ export default function HistoryPage() {
         const result = await response.json()
         if (result.success) {
           setItems((prev) => prev.filter((i) => i.id !== id))
-          // Clear selection if item was selected
-          if (isSelected(id)) {
-            toggleSelect(id)
-          }
+
         }
       } else {
         console.error('Error deleting content:', response.statusText)
@@ -434,27 +422,7 @@ export default function HistoryPage() {
     }
   }
 
-  const handleBulkDelete = async (ids: string[]) => {
-    try {
-      // Delete multiple items
-      await Promise.all(ids.map(id => deleteContent(id)))
-      deselectAll()
-    } catch (err) {
-      console.error('Failed to bulk delete:', err)
-    }
-  }
 
-  const handleBulkExport = (ids: string[]) => {
-    const selectedContent = filteredContent.filter(item => ids.includes(item.id))
-    const jsonData = JSON.stringify(selectedContent, null, 2)
-    const blob = new Blob([jsonData], { type: 'application/json' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = `selected-content-${new Date().toISOString().split('T')[0]}.json`
-    a.click()
-    URL.revokeObjectURL(url)
-  }
 
   const exportContent = (format: 'json' | 'txt') => {
     if (format === 'json') {
@@ -604,6 +572,7 @@ export default function HistoryPage() {
         <Input
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && e.preventDefault()}
           placeholder="Search content by title or keywords..."
           className="pl-10 bg-gray-800/70 border border-gray-700 rounded-xl 
                      text-gray-100 placeholder-gray-400 focus:ring-2 
@@ -729,17 +698,7 @@ export default function HistoryPage() {
           </button>
         </div>
         
-        {/* Pagination Toggle */}
-        <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setUsePagination(!usePagination)}
-            className="bg-gray-800/70 border-gray-700 hover:bg-gray-700 text-xs"
-          >
-            {usePagination ? 'Pagination' : 'Infinite Scroll'}
-          </Button>
-        </div>
+
       </div>
     </div>
   </CardContent>
@@ -787,28 +746,35 @@ export default function HistoryPage() {
             </Card>
           </div>
 
-          {/* Bulk Actions */}
-          <BulkActions
-            selectedItems={selectedItems}
-            totalItems={filteredContent.length}
-            onSelectAll={selectAll}
-            onDeselectAll={deselectAll}
-            onBulkDelete={handleBulkDelete}
-            onBulkExport={handleBulkExport}
-          />
+
 
           {/* Content Grid/List */}
-          {usePagination ? (
-            <PaginatedList
-              items={filteredContent}
-              itemsPerPage={itemsPerPage}
-              className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}
-              renderItem={(item, index) => (
-                <SelectableItem
+          {filteredContent.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
+                <Archive className="h-8 w-8 text-gray-400" />
+              </div>
+              <h3 className="text-lg font-medium text-heading mb-2">No Content Found</h3>
+              <p className="text-gray-500 max-w-md mx-auto mb-6">
+                {searchQuery || contentType !== 'all' || dateRange
+                  ? "Try adjusting your search or filters to find what you're looking for."
+                  : "You haven't created any content yet. Start by transforming your first piece of content."
+                }
+              </p>
+              {!searchQuery && contentType === 'all' && !dateRange && (
+                <Button onClick={() => router.push('/dashboard')}>
+                  Create Your First Content
+                </Button>
+              )}
+            </div>
+          ) : (
+            <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
+              {filteredContent.map((item, index) => (
+                <motion.div
                   key={item.id}
-                  id={item.id}
-                  isSelected={isSelected(item.id)}
-                  onToggleSelect={toggleSelect}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
                 >
                   <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer"
                         onClick={() => handlePreview(item)}>
@@ -886,133 +852,9 @@ export default function HistoryPage() {
                       </div>
                     </CardContent>
                   </Card>
-                </SelectableItem>
-              )}
-              renderEmpty={() => (
-                <div className="text-center py-12">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
-                    <Archive className="h-8 w-8 text-gray-400" />
-                  </div>
-                  <h3 className="text-lg font-medium text-heading mb-2">No Content Found</h3>
-                  <p className="text-gray-500 max-w-md mx-auto mb-6">
-                    {searchQuery || contentType !== 'all' || dateRange
-                      ? "Try adjusting your search or filters to find what you're looking for."
-                      : "You haven't created any content yet. Start by transforming your first piece of content."
-                    }
-                  </p>
-                  {!searchQuery && contentType === 'all' && !dateRange && (
-                    <Button onClick={() => router.push('/dashboard')}>
-                      Create Your First Content
-                    </Button>
-                  )}
-                </div>
-              )}
-            />
-          ) : (
-            <InfiniteScroll
-              hasNextPage={false}
-              isFetchingNextPage={false}
-              fetchNextPage={() => {}}
-              endMessage={
-                <div className="text-center text-muted py-8">
-                  <p>You've reached the end of your content!</p>
-                </div>
-              }
-            >
-              <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
-                {filteredContent.map((item, index) => (
-                  <SelectableItem
-                    key={item.id}
-                    id={item.id}
-                    isSelected={isSelected(item.id)}
-                    onToggleSelect={toggleSelect}
-                  >
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer"
-                            onClick={() => handlePreview(item)}>
-                        <CardHeader className="pb-3">
-                          <div className="flex items-start justify-between">
-                              <div className="flex items-center gap-3 flex-1">
-                                <div className={`w-8 h-8 rounded-full ${getPlatformIcon(item.content_type).color} flex items-center justify-center`}>
-                                {React.createElement(getPlatformIcon(item.content_type).icon, { className: "h-4 w-4 text-white" })}
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <h3 className="font-medium text-heading truncate">{item.title || 'Untitled'}</h3>
-                                <div className="flex items-center gap-2 text-xs text-muted mt-1">
-                                  <span>{getPlatformIcon(item.content_type).name}</span>
-                                  <span>•</span>
-                                  <span>{new Date(item.created_at).toLocaleDateString()}</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </CardHeader>
-                        
-                        <CardContent className="pt-0">
-                          <div className="mb-4">
-                            <p className="text-sm text-muted line-clamp-3">
-                              {item.content.length > 150 ? `${item.content.substring(0, 150)}...` : item.content}
-                            </p>
-                          </div>
-
-                          <div className="flex items-center gap-2">
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                copyToClipboard(item.content, item.title || 'Content')
-                              }}
-                              className="flex-1"
-                            >
-                              <Copy className="h-3 w-3 mr-1" />
-                              Copy
-                            </Button>
-                            <Button 
-                              variant="outline" 
-                              size="sm"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                handlePreview(item)
-                              }}
-                            >
-                              <Eye className="h-3 w-3 mr-1" />
-                              View
-                            </Button>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                handleShare(item)
-                              }}
-                              className="p-2"
-                            >
-                              <Share2 className="h-3 w-3" />
-                            </Button>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                setShowDeleteConfirm(item.id)
-                              }}
-                              className="text-red-600 hover:text-red-700"
-                            >
-                              <Trash2 className="h-3 w-3" />
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  </SelectableItem>
-                ))}
-              </div>
-            </InfiniteScroll>
+                </motion.div>
+              ))}
+            </div>
           )}
 
           {/* Enhanced Content Preview Modal */}
