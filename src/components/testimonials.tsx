@@ -12,7 +12,7 @@ const testimonials = [
     followers: "50K",
     platform: Twitter,
     avatar: "SC",
-    content: "repuposemate saved me 6 hours this week. One blog post became 12 viral tweets that got 50K impressions!",
+    content: "RepuposeMate saved me 6 hours this week. One blog post became 12 viral tweets that got 50K impressions!",
     metrics: "50K impressions, 1.2K likes",
     rating: 5
   },
@@ -23,7 +23,7 @@ const testimonials = [
     followers: "85K",
     platform: Linkedin,
     avatar: "MR",
-    content: "Finally, a tool that understands my voice. My LinkedIn engagement increased 3x since using repuposemate.",
+    content: "Finally, a tool that understands my voice. My LinkedIn engagement increased 3x since using RepuposeMate.",
     metrics: "3x engagement increase",
     rating: 5
   },
@@ -52,7 +52,7 @@ export default function Testimonials() {
         >
           <h2 className="text-4xl font-bold mb-4 text-white">Loved by 12,000+ Creators</h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            See what content creators are saying about repuposemate
+            See what content creators are saying about RepuposeMate
           </p>
         </motion.div>
 

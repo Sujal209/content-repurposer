@@ -34,7 +34,7 @@ export default function TermsOfServicePage() {
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
                 <Scale className="h-4 w-4 text-white" />
               </div>
-              <h1 className="text-xl font-bold gradient-text">repuposemate</h1>
+              <h1 className="text-xl font-bold gradient-text">RepuposeMate</h1>
             </Link>
             
             <div className="flex items-center gap-4">
@@ -64,7 +64,7 @@ export default function TermsOfServicePage() {
               Terms of Service
             </h1>
             <p className="text-xl text-muted max-w-2xl mx-auto mb-6">
-              These terms govern your use of repuposemate's AI-powered content transformation service. Please read carefully before transforming your content.
+              These terms govern your use of RepuposeMate's AI-powered content transformation service. Please read carefully before transforming your content.
             </p>
             <div className="flex items-center justify-center gap-4 text-sm text-muted">
               <span>Last updated: January 28, 2025</span>
@@ -84,7 +84,7 @@ export default function TermsOfServicePage() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-4 text-muted">
-                <p>By accessing or using repuposemate, you agree to be bound by these Terms of Service and our Privacy Policy. If you disagree with any part of these terms, you may not use our service.</p>
+                <p>By accessing or using RepuposeMate, you agree to be bound by these Terms of Service and our Privacy Policy. If you disagree with any part of these terms, you may not use our service.</p>
                 <p>We may update these terms from time to time. We'll notify you of any material changes via email or through our service. Your continued use constitutes acceptance of the updated terms.</p>
               </CardContent>
             </Card>
@@ -98,7 +98,7 @@ export default function TermsOfServicePage() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-4 text-muted">
-                <p>repuposemate transforms your blog posts, articles, and long-form content into engaging social media posts using advanced AI. We support Twitter threads, LinkedIn carousels, and Instagram Reels with platform-specific optimization.</p>
+                <p>RepuposeMate transforms your blog posts, articles, and long-form content into engaging social media posts using advanced AI. We support Twitter threads, LinkedIn carousels, and Instagram Reels with platform-specific optimization.</p>
                 <p>Our service includes real-time content analysis, readability scoring, engagement metrics, and content preferences customization. Usage limits apply based on your subscription plan.</p>
               </CardContent>
             </Card>
@@ -157,9 +157,9 @@ export default function TermsOfServicePage() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-4 text-muted">
-                <p>You retain complete ownership of all content you input into repuposemate. We claim no rights to your original content or generated transformations.</p>
+                <p>You retain complete ownership of all content you input into RepuposeMate. We claim no rights to your original content or generated transformations.</p>
                 <p>You grant us a temporary, limited license to process your content solely for AI transformation. Content is processed in memory and immediately deleted after generation.</p>
-                <p>repuposemate's AI algorithms, prompt engineering, and transformation technology are proprietary and protected by intellectual property laws.</p>
+                <p>RepuposeMate's AI algorithms, prompt engineering, and transformation technology are proprietary and protected by intellectual property laws.</p>
                 <p>All generated social media content belongs to you. You're responsible for ensuring transformed content doesn't infringe third-party rights and complies with platform policies.</p>
               </CardContent>
             </Card>
@@ -173,7 +173,7 @@ export default function TermsOfServicePage() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-4 text-muted">
-                <p>repuposemate's AI transformations are provided "as is". We don't guarantee specific content quality, engagement rates, or transformation accuracy.</p>
+                <p>RepuposeMate's AI transformations are provided "as is". We don't guarantee specific content quality, engagement rates, or transformation accuracy.</p>
                 <p>We're not liable for how social media platforms respond to your generated content or any engagement outcomes.</p>
                 <p>Our total liability is limited to the subscription fees you paid in the 12 months before any claim.</p>
                 <p>You're solely responsible for reviewing, editing, and using generated content appropriately on social media platforms.</p>

@@ -73,7 +73,7 @@ export default function CookiePolicyPage() {
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
                 <Cookie className="h-4 w-4 text-white" />
               </div>
-              <h1 className="text-xl font-bold gradient-text">repuposemate</h1>
+              <h1 className="text-xl font-bold gradient-text">RepuposeMate</h1>
             </Link>
             
             <div className="flex items-center gap-4">
@@ -103,7 +103,7 @@ export default function CookiePolicyPage() {
               Cookie Policy
             </h1>
             <p className="text-xl text-muted max-w-2xl mx-auto mb-6">
-              Learn how repuposemate uses cookies to enhance your AI content transformation experience and remember your preferences.
+              Learn how RepuposeMate uses cookies to enhance your AI content transformation experience and remember your preferences.
             </p>
             <div className="flex items-center justify-center gap-4 text-sm text-muted">
               <span>Last updated: January 28, 2025</span>
@@ -255,7 +255,7 @@ export default function CookiePolicyPage() {
                   <div>
                     <h4 className="font-semibold mb-3 flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-green-600" />
-                      repuposemate Settings
+                      RepuposeMate Settings
                     </h4>
                     <p className="text-sm text-muted mb-3">
                       You can manage your cookie preferences through our cookie settings page.
@@ -299,7 +299,7 @@ export default function CookiePolicyPage() {
                   <div>
                     <h4 className="font-semibold text-orange-800 mb-2">Impact of Disabling Cookies</h4>
                     <p className="text-orange-700 text-sm mb-3">
-                      If you disable cookies, some features of repuposemate may not work properly:
+                      If you disable cookies, some features of RepuposeMate may not work properly:
                     </p>
                     <ul className="text-orange-700 text-sm space-y-1">
                       <li>• You'll need to log in for each session</li>

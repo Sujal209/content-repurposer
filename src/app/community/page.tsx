@@ -36,7 +36,7 @@ const communityLinks = [
     title: 'Discord Server',
     description: 'Join our active Discord community for real-time discussions, tips, and support',
     icon: MessageCircle,
-    link: 'https://discord.gg/repuposemate',
+    link: 'https://discord.gg/RepuposeMate',
     members: '3,500+ members',
     isActive: true
   },
@@ -44,15 +44,15 @@ const communityLinks = [
     title: 'Reddit Community',
     description: 'Share your success stories, ask questions, and get feedback from fellow creators',
     icon: Users,
-    link: 'https://reddit.com/r/repuposemate',
+    link: 'https://reddit.com/r/RepuposeMate',
     members: '1,200+ members',
     isActive: true
   },
   {
     title: 'Twitter Community',
-    description: 'Follow us for updates, tips, and engage with other repuposemate users',
+    description: 'Follow us for updates, tips, and engage with other RepuposeMate users',
     icon: Twitter,
-    link: 'https://twitter.com/repuposemate',
+    link: 'https://twitter.com/RepuposeMate',
     members: '8,000+ followers',
     isActive: true
   },
@@ -60,7 +60,7 @@ const communityLinks = [
     title: 'LinkedIn Group',
     description: 'Professional networking and business-focused content discussion',
     icon: Linkedin,
-    link: 'https://linkedin.com/groups/repuposemate',
+    link: 'https://linkedin.com/groups/RepuposeMate',
     members: '2,500+ members',
     isActive: true
   }
@@ -109,14 +109,14 @@ const featuredContent = [
   },
   {
     type: 'Tutorial',
-    title: 'Advanced repuposemate: Customizing output for different audiences',
+    title: 'Advanced RepuposeMate: Customizing output for different audiences',
     author: 'Mike Rodriguez',
     engagement: '89 likes • 22 comments',
     link: '#'
   },
   {
     type: 'Tip',
-    title: 'Best practices for LinkedIn carousel posts using repuposemate',
+    title: 'Best practices for LinkedIn carousel posts using RepuposeMate',
     author: 'Emma Thompson',
     engagement: '203 likes • 45 comments',
     link: '#'
@@ -137,10 +137,10 @@ export default function CommunityPage() {
             <Link href="/" className="flex items-center gap-3">
               <img 
                 src="/repurposemate-logo.png" 
-                alt="repuposemate logo" 
+                alt="RepuposeMate logo" 
                 className="w-8 h-8 object-contain drop-shadow-lg"
               />
-              <h1 className="text-xl font-bold gradient-text">repuposemate</h1>
+              <h1 className="text-xl font-bold gradient-text">RepuposeMate</h1>
             </Link>
             
             <div className="flex items-center gap-4">
@@ -148,7 +148,7 @@ export default function CommunityPage() {
                 <BookOpen className="h-4 w-4 mr-2" />
                 Help Center
               </Button>
-              <Button onClick={() => window.open('https://discord.gg/repuposemate', '_blank')}>
+              <Button onClick={() => window.open('https://discord.gg/RepuposeMate', '_blank')}>
                 <MessageCircle className="h-4 w-4 mr-2" />
                 Join Discord
               </Button>
@@ -167,7 +167,7 @@ export default function CommunityPage() {
             className="text-center mb-12"
           >
             <h1 className="text-4xl font-bold gradient-text mb-4">
-              Join the repuposemate Community
+              Join the RepuposeMate Community
             </h1>
             <p className="text-xl text-muted max-w-3xl mx-auto mb-8">
               Connect with thousands of content creators, marketers, and entrepreneurs who are 
@@ -276,7 +276,7 @@ export default function CommunityPage() {
           >
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold">Featured Community Content</h2>
-              <Button variant="outline" onClick={() => window.open('https://discord.gg/repuposemate', '_blank')}>
+              <Button variant="outline" onClick={() => window.open('https://discord.gg/RepuposeMate', '_blank')}>
                 View All
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
@@ -324,7 +324,7 @@ export default function CommunityPage() {
                   Our community is here to help you succeed.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" onClick={() => window.open('https://discord.gg/repuposemate', '_blank')}>
+                  <Button size="lg" onClick={() => window.open('https://discord.gg/RepuposeMate', '_blank')}>
                     <MessageCircle className="h-4 w-4 mr-2" />
                     Join Discord Community
                   </Button>

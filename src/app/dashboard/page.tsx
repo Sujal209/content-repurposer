@@ -288,10 +288,10 @@ export default function Dashboard() {
             <div className="flex items-center gap-3">
               <img 
                 src="/repurposemate-logo.png" 
-                alt="repuposemate logo" 
+                alt="RepuposeMate logo" 
                 className="w-10 h-10 object-contain drop-shadow-lg"
               />
-              <h1 className="text-xl font-bold gradient-text">repuposemate</h1>
+              <h1 className="text-xl font-bold gradient-text">RepuposeMate</h1>
             </div>
             
             <div className="flex items-center gap-2 sm:gap-4">
@@ -371,7 +371,7 @@ export default function Dashboard() {
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-surface/50">
                     <img 
                       src="/repurposemate-logo.png" 
-                      alt="repuposemate" 
+                      alt="RepuposeMate" 
                       className="w-10 h-10 object-contain drop-shadow-lg"
                     />
                     <div className="flex-1 min-w-0">

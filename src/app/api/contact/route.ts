@@ -113,7 +113,7 @@ export async function POST(request: NextRequest) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Contact Form Submission - repuposemate</title>
+    <title>New Contact Form Submission - RepuposeMate</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 20px; background-color: #f4f4f4; }
         .container { max-width: 600px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
@@ -131,7 +131,7 @@ export async function POST(request: NextRequest) {
     <div class="container">
         <div class="header">
             <h1 style="margin: 0; font-size: 24px;">New Contact Form Submission</h1>
-            <p style="margin: 10px 0 0 0; opacity: 0.9;">repuposemate Support</p>
+            <p style="margin: 10px 0 0 0; opacity: 0.9;">RepuposeMate Support</p>
         </div>
         
         <div class="content">
@@ -164,7 +164,7 @@ export async function POST(request: NextRequest) {
         </div>
         
         <div class="footer">
-            <p>This message was sent from the repuposemate contact form.<br>
+            <p>This message was sent from the RepuposeMate contact form.<br>
             Please respond directly to: <strong>${email}</strong></p>
             <p style="margin-top: 15px; font-size: 12px; opacity: 0.7;">
                 Submission time: ${new Date().toLocaleString('en-US', { 
@@ -190,7 +190,7 @@ export async function POST(request: NextRequest) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank you for contacting repuposemate</title>
+    <title>Thank you for contacting RepuposeMate</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 20px; background-color: #f4f4f4; }
         .container { max-width: 600px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
@@ -210,7 +210,7 @@ export async function POST(request: NextRequest) {
         <div class="content">
             <p>Hi ${name},</p>
             
-            <p>Thank you for reaching out to repuposemate! We've received your message regarding "<strong>${subject}</strong>" and appreciate you taking the time to contact us.</p>
+            <p>Thank you for reaching out to RepuposeMate! We've received your message regarding "<strong>${subject}</strong>" and appreciate you taking the time to contact us.</p>
             
             <p><strong>What happens next?</strong></p>
             <ul>
@@ -221,21 +221,21 @@ export async function POST(request: NextRequest) {
             
             <p>In the meantime, you might find these resources helpful:</p>
             
-            <a href="https://repuposemate.com/help" class="cta-button" style="color: white;">Visit Help Center</a>
+            <a href="https://RepuposeMate.com/help" class="cta-button" style="color: white;">Visit Help Center</a>
             
-            <p style="margin-top: 30px;">If you need immediate assistance, you can browse our <a href="https://repuposemate.com/help">FAQ section</a> or reach out to our community for help.</p>
+            <p style="margin-top: 30px;">If you need immediate assistance, you can browse our <a href="https://RepuposeMate.com/help">FAQ section</a> or reach out to our community for help.</p>
             
-            <p>Thanks for being part of the repuposemate community!</p>
+            <p>Thanks for being part of the RepuposeMate community!</p>
             
             <p>Best regards,<br>
-            <strong>The repuposemate Team</strong></p>
+            <strong>The RepuposeMate Team</strong></p>
         </div>
         
         <div class="footer">
-            <p><strong>repuposemate</strong> - AI-Powered Content Transformation</p>
+            <p><strong>RepuposeMate</strong> - AI-Powered Content Transformation</p>
             <p style="margin-top: 10px; font-size: 12px;">
                 This is an automated response. Please do not reply to this email.<br>
-                For support, visit <a href="https://repuposemate.com/contact">repuposemate.com/contact</a>
+                For support, visit <a href="https://RepuposeMate.com/contact">RepuposeMate.com/contact</a>
             </p>
         </div>
     </div>
@@ -246,9 +246,9 @@ export async function POST(request: NextRequest) {
     // Send admin notification email
     try {
       await transporter.sendMail({
-        from: `"repuposemate Contact Form" <${process.env.ZOHO_SMTP_USER}>`,
+        from: `"RepuposeMate Contact Form" <${process.env.ZOHO_SMTP_USER}>`,
         to: process.env.ZOHO_SMTP_USER, // Send to your admin email
-        subject: `[repuposemate] New ${category} inquiry: ${subject}`,
+        subject: `[RepuposeMate] New ${category} inquiry: ${subject}`,
         html: adminEmailContent,
         replyTo: email, // Allow direct reply to user
       })
@@ -263,9 +263,9 @@ export async function POST(request: NextRequest) {
     // Send auto-reply to user
     try {
       await transporter.sendMail({
-        from: `"repuposemate Support" <${process.env.ZOHO_SMTP_USER}>`,
+        from: `"RepuposeMate Support" <${process.env.ZOHO_SMTP_USER}>`,
         to: email,
-        subject: 'Thank you for contacting repuposemate - We\'ll be in touch soon!',
+        subject: 'Thank you for contacting RepuposeMate - We\'ll be in touch soon!',
         html: userReplyContent,
       })
     } catch (error) {

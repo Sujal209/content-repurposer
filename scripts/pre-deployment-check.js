@@ -8,7 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 
-console.log('🚀 repuposemate Pre-Deployment Check\n');
+console.log('🚀 RepuposeMate Pre-Deployment Check\n');
 
 let hasErrors = false;
 let hasWarnings = false;
@@ -66,7 +66,7 @@ function checkEnvironment() {
   }
   
   // Check for development secrets
-  if (envContent.includes('repuposemate-super-secret-key-2025')) {
+  if (envContent.includes('RepuposeMate-super-secret-key-2025')) {
     warning('Using development NEXTAUTH_SECRET - generate new one for production');
   }
 }
@@ -228,7 +228,7 @@ async function main() {
     console.log('\n🚀 You can proceed with deployment, but consider fixing warnings first.');
   } else {
     console.log('✅ ALL CHECKS PASSED: Ready for deployment!');
-    console.log('\n🎉 Your repuposemate application is ready to go live!');
+    console.log('\n🎉 Your RepuposeMate application is ready to go live!');
   }
   
   console.log('\n📋 Next Steps:');

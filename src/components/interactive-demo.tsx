@@ -203,7 +203,7 @@ export default function InteractiveDemo() {
         >
           <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-white px-4 sm:px-0">Try It Yourself</h3>
           <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
-            See how repuposemate transforms a blog post into platform-specific social content. 
+            See how RepuposeMate transforms a blog post into platform-specific social content. 
             <span className="font-semibold text-white block sm:inline mt-1 sm:mt-0">No signup required!</span>
           </p>
         </motion.div>

@@ -79,10 +79,10 @@ export default function ContactPage() {
             <Link href="/" className="flex items-center gap-3">
               <img 
                 src="/repurposemate-logo.png" 
-                alt="repuposemate logo" 
+                alt="RepuposeMate logo" 
                 className="w-8 h-8 object-contain drop-shadow-lg"
               />
-              <h1 className="text-xl font-bold gradient-text">repuposemate</h1>
+              <h1 className="text-xl font-bold gradient-text">RepuposeMate</h1>
             </Link>
           </div>
         </header>
@@ -130,10 +130,10 @@ export default function ContactPage() {
             <Link href="/" className="flex items-center gap-3">
               <img 
                 src="/repurposemate-logo.png" 
-                alt="repuposemate logo" 
+                alt="RepuposeMate logo" 
                 className="w-8 h-8 object-contain drop-shadow-lg"
               />
-              <h1 className="text-xl font-bold gradient-text">repuposemate</h1>
+              <h1 className="text-xl font-bold gradient-text">RepuposeMate</h1>
             </Link>
             
             <Button variant="outline" onClick={() => window.location.href = '/help'}>

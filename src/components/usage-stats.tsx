@@ -8,7 +8,7 @@ const stats = [
     icon: Users,
     number: "12,000+",
     label: "Active Creators",
-    description: "Content creators trust repuposemate",
+    description: "Content creators trust RepuposeMate",
     color: "from-blue-500 to-blue-600"
   },
   {
@@ -29,7 +29,7 @@ const stats = [
     icon: Zap,
     number: "98%",
     label: "Satisfaction Rate",
-    description: "Creators love repuposemate",
+    description: "Creators love RepuposeMate",
     color: "from-yellow-500 to-orange-500"
   }
 ]
@@ -46,7 +46,7 @@ export default function UsageStats() {
         >
           <h2 className="text-4xl font-bold mb-4 text-white">Trusted by Creators Worldwide</h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Join thousands of content creators who are scaling their reach with repuposemate
+            Join thousands of content creators who are scaling their reach with RepuposeMate
           </p>
         </motion.div>
 
