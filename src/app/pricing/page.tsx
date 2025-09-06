@@ -36,14 +36,14 @@ const pricingPlans = [
     color: 'from-gray-500 to-gray-600',
     buttonText: 'Get Started Free',
     buttonVariant: 'outline' as const,
-    popular: false,
+    popular: true,
     features: [
-      { name: '100 monthly credits', included: true },
-      { name: 'Basic content formats', included: true },
-      { name: 'Community support', included: true },
-      { name: 'Content library', included: false },
-      { name: 'Priority support', included: false },
-      { name: 'Custom branding', included: false },
+      { name: '3 daily credits', included: true },
+      { name: 'All 3 content formats', included: true },
+      { name: 'Content analysis & tips', included: true },
+      { name: 'Content library', included: true },
+      { name: 'Export & share options', included: true },
+      { name: 'Email support', included: true },
       { name: 'API access', included: false },
       { name: 'Team collaboration', included: false },
     ]
@@ -56,16 +56,16 @@ const pricingPlans = [
     description: 'Best for content creators and marketers',
     icon: Crown,
     color: 'from-blue-500 to-purple-600',
-    buttonText: 'Start Pro Trial',
+    buttonText: 'Coming Soon',
     buttonVariant: 'gradient' as const,
-    popular: true,
+    popular: false,
     features: [
-      { name: '5,000 monthly credits', included: true },
+      { name: '200 daily credits', included: true },
       { name: 'All content formats', included: true },
       { name: 'Priority support', included: true },
-      { name: 'Content library', included: true },
-      { name: 'Export options', included: true },
-      { name: 'Custom branding', included: false },
+      { name: 'Advanced analytics', included: true },
+      { name: 'Bulk operations', included: true },
+      { name: 'Custom preferences', included: true },
       { name: 'API access', included: false },
       { name: 'Team collaboration', included: false },
     ]
@@ -78,15 +78,15 @@ const pricingPlans = [
     description: 'For teams and agencies',
     icon: Building2,
     color: 'from-purple-500 to-pink-600',
-    buttonText: 'Contact Sales',
+    buttonText: 'Coming Soon',
     buttonVariant: 'outline' as const,
     popular: false,
     features: [
-      { name: '25,000 monthly credits', included: true },
+      { name: '2000+ daily credits', included: true },
       { name: 'All content formats', included: true },
       { name: 'Dedicated support', included: true },
-      { name: 'Content library', included: true },
-      { name: 'Export options', included: true },
+      { name: 'Advanced analytics', included: true },
+      { name: 'Bulk operations', included: true },
       { name: 'Custom branding', included: true },
       { name: 'API access', included: true },
       { name: 'Team collaboration', included: true },
@@ -129,9 +129,11 @@ export default function PricingPage() {
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                <Sparkles className="h-4 w-4 text-white" />
-              </div>
+              <img 
+                src="/repurposemate-logo.png" 
+                alt="ContentCraft logo" 
+                className="w-8 h-8 object-contain drop-shadow-lg"
+              />
               <h1 className="text-xl font-bold gradient-text">ContentCraft</h1>
             </div>
             
@@ -264,12 +266,9 @@ export default function PricingPage() {
                       onClick={() => {
                         if (plan.id === 'free') {
                           router.push('/auth')
-                        } else if (plan.id === 'enterprise') {
-                          // TODO: Implement contact sales
-                          console.log('Contact sales')
                         } else {
-                          // TODO: Implement subscription
-                          console.log('Subscribe to', plan.name)
+                          // Coming soon for paid plans
+                          router.push('/contact')
                         }
                       }}
                     >
@@ -369,14 +368,14 @@ export default function PricingPage() {
                     </thead>
                     <tbody>
                       {[
-                        { feature: 'Monthly Credits', free: '100', pro: '5,000', enterprise: '25,000' },
-                        { feature: 'Content Formats', free: 'Basic', pro: 'All', enterprise: 'All + Custom' },
-                        { feature: 'Content Library', free: '✗', pro: '✓', enterprise: '✓' },
-                        { feature: 'Export Options', free: '✗', pro: '✓', enterprise: '✓' },
+                        { feature: 'Daily Credits', free: '3', pro: '200', enterprise: '2000+' },
+                        { feature: 'Content Formats', free: 'All 3', pro: 'All 3', enterprise: 'All 3' },
+                        { feature: 'Content Analysis', free: '✓', pro: '✓', enterprise: '✓' },
+                        { feature: 'Content Library', free: '✓', pro: '✓', enterprise: '✓' },
+                        { feature: 'Export Options', free: '✓', pro: '✓', enterprise: '✓' },
                         { feature: 'API Access', free: '✗', pro: '✗', enterprise: '✓' },
                         { feature: 'Team Collaboration', free: '✗', pro: '✗', enterprise: '✓' },
-                        { feature: 'Custom Branding', free: '✗', pro: '✗', enterprise: '✓' },
-                        { feature: 'Support Level', free: 'Community', pro: 'Priority', enterprise: 'Dedicated' },
+                        { feature: 'Support Level', free: 'Email', pro: 'Priority', enterprise: 'Dedicated' },
                       ].map((row, index) => (
                         <tr key={index} className="border-b border-gray-100">
                           <td className="py-3 px-4 text-sm font-medium text-foreground">{row.feature}</td>
@@ -408,27 +407,27 @@ export default function PricingPage() {
               {[
                 {
                   question: "What are credits and how do they work?",
-                  answer: "Credits are used each time you transform content. One transformation typically uses 1-3 credits depending on the output format and content length."
+                  answer: "Credits are used each time you transform content. One transformation typically uses 1-3 credits depending on the output format and content length. Free users get 3 credits per day."
                 },
                 {
                   question: "Can I change plans anytime?",
                   answer: "Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately and we'll pro-rate any billing differences."
                 },
                 {
-                  question: "Is there a free trial for paid plans?",
-                  answer: "Yes, we offer a 14-day free trial for both Pro and Enterprise plans. No credit card required to start."
+                  question: "When will paid plans be available?",
+                  answer: "Paid plans are coming soon! Currently, we offer a free plan with 3 daily credits. Contact us to be notified when Pro and Enterprise plans launch."
                 },
                 {
-                  question: "What happens if I exceed my credit limit?",
-                  answer: "You can purchase additional credits or upgrade your plan. We'll notify you when you're approaching your limit."
+                  question: "What happens if I exceed my daily credit limit?",
+                  answer: "Free users get 3 credits per day. If you need more, contact us about upcoming paid plans or wait until the next day for your credits to reset."
                 },
                 {
                   question: "Do you offer discounts for annual billing?",
-                  answer: "Yes! Save 20% when you choose annual billing on any paid plan. That's like getting 2.4 months free every year."
+                  answer: "Yes! When paid plans launch, we'll offer 20% savings for annual billing. That's like getting 2.4 months free every year."
                 },
                 {
                   question: "Can I cancel my subscription anytime?",
-                  answer: "Absolutely. You can cancel your subscription at any time from your account settings. Your plan remains active until the end of your billing period."
+                  answer: "Absolutely. When paid plans launch, you can cancel your subscription at any time from your account settings. Your plan remains active until the end of your billing period."
                 }
               ].map((faq, index) => (
                 <Card key={index}>
@@ -456,15 +455,15 @@ export default function PricingPage() {
                   Ready to Transform Your Content?
                 </h2>
                 <p className="text-muted mb-8 max-w-md mx-auto">
-                  Join thousands of content creators who are already saving hours with ContentCraft
+                  Join content creators who are transforming their social media strategy with ContentCraft
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button size="lg" onClick={() => router.push('/auth')}>
-                    Start Free Trial
+                    Start Free Now
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
-                  <Button variant="outline" size="lg">
-                    Contact Sales
+                  <Button variant="outline" size="lg" onClick={() => router.push('/contact')}>
+                    Contact Us
                   </Button>
                 </div>
               </CardContent>

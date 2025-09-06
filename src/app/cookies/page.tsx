@@ -23,7 +23,7 @@ const cookieTypes = [
   {
     name: 'Strictly Necessary',
     purpose: 'Essential for the website to function properly',
-    examples: ['Authentication tokens', 'Session management', 'Security cookies', 'API keys'],
+    examples: ['User authentication', 'Active sessions', 'Security tokens', 'Content transformation state'],
     canDisable: false,
     duration: 'Session or 1 year',
     icon: Shield,
@@ -32,7 +32,7 @@ const cookieTypes = [
   {
     name: 'Functional',
     purpose: 'Remember your preferences and settings',
-    examples: ['Language preferences', 'Theme selection', 'Dashboard layout', 'User settings'],
+    examples: ['Content preferences', 'Platform settings (Twitter/LinkedIn/Instagram)', 'Dashboard layout', 'Transformation history'],
     canDisable: true,
     duration: 'Up to 1 year',
     icon: Settings,
@@ -41,7 +41,7 @@ const cookieTypes = [
   {
     name: 'Analytics',
     purpose: 'Help us understand how you use our service',
-    examples: ['Page views', 'Feature usage', 'Performance metrics', 'Error tracking'],
+    examples: ['Transformation counts', 'Content type preferences', 'Feature usage patterns', 'AI performance metrics'],
     canDisable: true,
     duration: 'Up to 2 years',
     icon: BarChart,
@@ -50,7 +50,7 @@ const cookieTypes = [
   {
     name: 'Marketing',
     purpose: 'Used for advertising and marketing purposes',
-    examples: ['Ad targeting', 'Campaign tracking', 'Social media integration'],
+    examples: ['Content marketing insights', 'User engagement tracking', 'Platform optimization data'],
     canDisable: true,
     duration: 'Up to 1 year',
     icon: Globe,
@@ -73,7 +73,7 @@ export default function CookiePolicyPage() {
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
                 <Cookie className="h-4 w-4 text-white" />
               </div>
-              <h1 className="text-xl font-bold gradient-text">Cookie Policy</h1>
+              <h1 className="text-xl font-bold gradient-text">ContentCraft</h1>
             </Link>
             
             <div className="flex items-center gap-4">
@@ -103,7 +103,7 @@ export default function CookiePolicyPage() {
               Cookie Policy
             </h1>
             <p className="text-xl text-muted max-w-2xl mx-auto mb-6">
-              This policy explains how ContentCraft uses cookies and similar technologies to provide and improve our service.
+              Learn how ContentCraft uses cookies to enhance your AI content transformation experience and remember your preferences.
             </p>
             <div className="flex items-center justify-center gap-4 text-sm text-muted">
               <span>Last updated: January 28, 2025</span>
@@ -215,19 +215,19 @@ export default function CookiePolicyPage() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="border rounded-lg p-4">
-                    <h4 className="font-semibold mb-2">Stripe (Payments)</h4>
-                    <p className="text-sm text-muted mb-2">Processes payments securely</p>
-                    <a href="https://stripe.com/privacy" target="_blank" className="text-xs text-primary hover:underline flex items-center gap-1">
-                      View Stripe's Privacy Policy
+                    <h4 className="font-semibold mb-2">Supabase (Authentication)</h4>
+                    <p className="text-sm text-muted mb-2">Secure user authentication and session management</p>
+                    <a href="https://supabase.com/privacy" target="_blank" className="text-xs text-primary hover:underline flex items-center gap-1">
+                      View Supabase's Privacy Policy
                       <Globe className="h-3 w-3" />
                     </a>
                   </div>
                   
                   <div className="border rounded-lg p-4">
-                    <h4 className="font-semibold mb-2">Supabase (Backend)</h4>
-                    <p className="text-sm text-muted mb-2">Handles authentication and data</p>
-                    <a href="https://supabase.com/privacy" target="_blank" className="text-xs text-primary hover:underline flex items-center gap-1">
-                      View Supabase's Privacy Policy
+                    <h4 className="font-semibold mb-2">OpenRouter (AI Processing)</h4>
+                    <p className="text-sm text-muted mb-2">Powers AI content transformations via OpenAI GPT-4</p>
+                    <a href="https://openrouter.ai/privacy" target="_blank" className="text-xs text-primary hover:underline flex items-center gap-1">
+                      View OpenRouter's Privacy Policy
                       <Globe className="h-3 w-3" />
                     </a>
                   </div>
@@ -302,10 +302,11 @@ export default function CookiePolicyPage() {
                       If you disable cookies, some features of ContentCraft may not work properly:
                     </p>
                     <ul className="text-orange-700 text-sm space-y-1">
-                      <li>• You may need to log in repeatedly</li>
-                      <li>• Your preferences and settings won't be saved</li>
-                      <li>• Some features may not function correctly</li>
-                      <li>• We won't be able to provide personalized experiences</li>
+                      <li>• You'll need to log in for each session</li>
+                      <li>• Content preferences won't be remembered</li>
+                      <li>• Platform-specific settings will reset</li>
+                      <li>• Transformation history won't be saved</li>
+                      <li>• Usage tracking may not work properly</li>
                     </ul>
                   </div>
                 </div>

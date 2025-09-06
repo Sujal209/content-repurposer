@@ -85,9 +85,11 @@ export default function Navbar({ plan = 'free', remainingToday = 0, dailyLimit =
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center" role="img" aria-label="ContentCraft logo">
-                <Sparkles className="h-4 w-4 text-white" aria-hidden="true" />
-              </div>
+              <img 
+                src="/repurposemate-logo.png" 
+                alt="ContentCraft logo" 
+                className="w-10 h-10 object-contain drop-shadow-lg"
+              />
               <h1 className="text-xl font-bold gradient-text">ContentCraft</h1>
             </div>
 
@@ -183,9 +185,11 @@ export default function Navbar({ plan = 'free', remainingToday = 0, dailyLimit =
                 {/* User Info */}
                 {user?.email && (
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-surface/50">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                      <User className="h-4 w-4 text-white" />
-                    </div>
+                    <img 
+                      src="/repurposemate-logo.png" 
+                      alt="ContentCraft" 
+                      className="w-10 h-10 object-contain drop-shadow-lg"
+                    />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-foreground truncate">{user.email}</p>
                       <div className="flex items-center gap-2 mt-1">

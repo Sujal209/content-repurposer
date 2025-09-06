@@ -77,9 +77,11 @@ export default function ContactPage() {
         <header className="border-b border-border bg-card-bg/80 backdrop-blur-xl relative z-10">
           <div className="container mx-auto px-4 sm:px-6 py-4">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                <Sparkles className="h-4 w-4 text-white" />
-              </div>
+              <img 
+                src="/repurposemate-logo.png" 
+                alt="ContentCraft logo" 
+                className="w-8 h-8 object-contain drop-shadow-lg"
+              />
               <h1 className="text-xl font-bold gradient-text">ContentCraft</h1>
             </Link>
           </div>
@@ -126,10 +128,12 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                <Mail className="h-4 w-4 text-white" />
-              </div>
-              <h1 className="text-xl font-bold gradient-text">Contact Us</h1>
+              <img 
+                src="/repurposemate-logo.png" 
+                alt="ContentCraft logo" 
+                className="w-8 h-8 object-contain drop-shadow-lg"
+              />
+              <h1 className="text-xl font-bold gradient-text">ContentCraft</h1>
             </Link>
             
             <Button variant="outline" onClick={() => window.location.href = '/help'}>
@@ -291,8 +295,8 @@ export default function ContactPage() {
                   <div className="flex items-center gap-3">
                     <MessageCircle className="h-5 w-5 text-primary" />
                     <div>
-                      <p className="font-medium">Live Chat</p>
-                      <p className="text-sm text-muted">Available for Pro+ users</p>
+                      <p className="font-medium">Support</p>
+                      <p className="text-sm text-muted">Email support for all users</p>
                     </div>
                   </div>
                 </CardContent>

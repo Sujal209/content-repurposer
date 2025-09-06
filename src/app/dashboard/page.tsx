@@ -274,7 +274,7 @@ export default function Dashboard() {
   if (!user) return null
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden flex flex-col">
+    <div className="min-h-screen bg-background relative flex flex-col">
       {/* Animated background elements */}
       <div className="data-lines" />
       <div className="absolute inset-0 bg-gradient-to-br from-background via-surface/5 to-background" />
@@ -283,9 +283,11 @@ export default function Dashboard() {
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                <Sparkles className="h-4 w-4 text-white" />
-              </div>
+              <img 
+                src="/repurposemate-logo.png" 
+                alt="ContentCraft logo" 
+                className="w-10 h-10 object-contain drop-shadow-lg"
+              />
               <h1 className="text-xl font-bold gradient-text">ContentCraft</h1>
             </div>
             
@@ -364,9 +366,11 @@ export default function Dashboard() {
                 {/* User Info */}
                 {user?.email && (
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-surface/50">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                      <User className="h-4 w-4 text-white" />
-                    </div>
+                    <img 
+                      src="/repurposemate-logo.png" 
+                      alt="ContentCraft" 
+                      className="w-10 h-10 object-contain drop-shadow-lg"
+                    />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-heading truncate">{user.email}</p>
                       <div className="flex items-center gap-2 mt-1">
@@ -432,15 +436,15 @@ export default function Dashboard() {
         </AnimatePresence>
       </header>
 
-      <div className="container mx-auto px-3 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-4 sm:space-y-6 flex-1">
         {/* Breadcrumb Navigation */}
         <Breadcrumb 
           items={[{ label: 'Dashboard', icon: Sparkles }]}
-          className="mb-4"
+          className="mb-2"
         />
         
         {/* Top Row: Your Content and Output Formats */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 p-[10px]">
           {/* Input Section */}
           <div className="lg:col-span-2">
             <motion.div
@@ -458,12 +462,12 @@ export default function Dashboard() {
                     Paste your blog post, video script, or podcast transcript
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="flex-1 flex flex-col space-y-4">
+                <CardContent className="flex-1 flex flex-col space-y-4 p-4 sm:p-6">
                   <textarea
                     value={inputContent}
                     onChange={(e) => handleInputChange(e.target.value)}
                     placeholder="Paste your long-form content here... (blog posts, video scripts, podcast transcripts)"
-                    className="flex-1 min-h-[200px] sm:min-h-[300px] w-full p-3 sm:p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-base"
+                    className="flex-1 min-h-[200px] sm:min-h-[300px] w-full p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-base mobile-text-base"
                   />
                   <div className="flex justify-between items-center text-sm text-muted">
                     <span>{wordCount} words</span>
@@ -489,7 +493,7 @@ export default function Dashboard() {
                     Choose which social media formats to generate
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="flex-1 flex flex-col space-y-3">
+                <CardContent className="flex-1 flex flex-col space-y-3 p-4 sm:p-6">
                   <div className="flex-1 space-y-3">
                     {contentTypes.map((type) => (
                       <div
@@ -560,19 +564,23 @@ export default function Dashboard() {
         </div>
 
         {/* Content Preferences */}
-        <ContentPreferences 
-          preferences={contentPreferences}
-          onPreferencesChange={setContentPreferences}
-          selectedFormats={selectedFormats}
-          inputContent={inputContent}
-        />
+        <div className="mt-2">
+          <ContentPreferences 
+            preferences={contentPreferences}
+            onPreferencesChange={setContentPreferences}
+            selectedFormats={selectedFormats}
+            inputContent={inputContent}
+          />
+        </div>
 
         {/* Content Analysis */}
         {currentAnalysis && (
-          <ContentAnalysisDisplay 
-            analysis={currentAnalysis}
-            className="mb-4 sm:mb-8"
-          />
+          <div className="mt-2">
+            <ContentAnalysisDisplay 
+              analysis={currentAnalysis}
+              className=""
+            />
+          </div>
         )}
 
         {/* Full Width Generated Content Section */}
@@ -581,7 +589,7 @@ export default function Dashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="w-full"
+            className="w-full mt-2"
           >
             <Card className="w-full">
               <CardHeader>
@@ -606,16 +614,16 @@ export default function Dashboard() {
                 )}
                 
                 {generatedContent.length > 0 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-8 w-full">
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 w-full">
                     {generatedContent.map((item, index) => (
                       <motion.div
                         key={item.type}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="border border-border rounded-xl p-4 sm:p-6 bg-card-bg shadow-sm hover:shadow-md transition-shadow"
+                        className="border border-border rounded-xl p-5 sm:p-6 bg-card-bg shadow-sm hover:shadow-md transition-shadow"
                       >
-                        <div className="flex items-start justify-between mb-4 gap-3">
+                        <div className="flex items-start justify-between mb-5 gap-3">
                           <div className="flex items-center gap-3 min-w-0 flex-1">
                             <div className={`w-10 h-10 rounded-full ${item.color} flex items-center justify-center flex-shrink-0`}>
                               <item.icon className="h-5 w-5 text-white" />
@@ -627,7 +635,7 @@ export default function Dashboard() {
                               variant="outline"
                               size="sm"
                               onClick={() => handlePreview(item)}
-                              className="mobile-touch-target hover:bg-gray-50 min-w-[44px] h-[44px] sm:min-w-auto sm:h-auto p-2 sm:p-2"
+                              className="mobile-touch-target hover:bg-gray-50 min-w-[44px] h-[44px] sm:min-w-auto sm:h-auto p-2.5 sm:p-2"
                               title="Preview content"
                               aria-label="Preview content"
                             >
@@ -637,7 +645,7 @@ export default function Dashboard() {
                               variant="outline"
                               size="sm"
                               onClick={() => copyToClipboard(item.content, item.title)}
-                              className="mobile-touch-target hover:bg-gray-50 min-w-[44px] h-[44px] sm:min-w-auto sm:h-auto p-2 sm:p-2"
+                              className="mobile-touch-target hover:bg-gray-50 min-w-[44px] h-[44px] sm:min-w-auto sm:h-auto p-2.5 sm:p-2"
                               title="Copy to clipboard"
                               aria-label="Copy content to clipboard"
                             >
@@ -655,7 +663,7 @@ export default function Dashboard() {
                                 a.click()
                                 URL.revokeObjectURL(url)
                               }}
-                              className="mobile-touch-target hover:bg-gray-50 min-w-[44px] h-[44px] sm:min-w-auto sm:h-auto p-2 sm:p-2"
+                              className="mobile-touch-target hover:bg-gray-50 min-w-[44px] h-[44px] sm:min-w-auto sm:h-auto p-2.5 sm:p-2"
                               title="Download content"
                               aria-label="Download content"
                             >
@@ -670,11 +678,11 @@ export default function Dashboard() {
                                 created_at: new Date().toISOString()
                               }}
                               variant="icon"
-                              className="mobile-touch-target hover:bg-gray-50 min-w-[44px] h-[44px] sm:min-w-auto sm:h-auto p-2 sm:p-2"
+                              className="mobile-touch-target hover:bg-gray-50 min-w-[44px] h-[44px] sm:min-w-auto sm:h-auto p-2.5 sm:p-2"
                             />
                           </div>
                         </div>
-                        <div className="bg-surface/30 rounded-lg p-3 sm:p-5 min-h-[200px]">
+                        <div className="bg-surface/30 rounded-lg p-4 sm:p-5 min-h-[200px]">
                           <pre className="whitespace-pre-wrap text-xs sm:text-sm text-foreground font-mono leading-relaxed">
                             {item.content}
                           </pre>
@@ -709,7 +717,7 @@ export default function Dashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="w-full"
+            className="w-full mt-2"
           >
             <Card className="w-full border-2 border-dashed border-gray-300 bg-gradient-to-br from-blue-50/30 to-purple-50/30">
               <CardContent className="py-16 text-center">

@@ -1,14 +1,31 @@
 {
-  "name": "content-repurposer",
-  "version": "0.1.0",
+  "name": "contentcraft",
+  "version": "1.0.0",
+  "description": "AI-powered content repurposing tool that transforms long-form content into engaging social media posts for Twitter, LinkedIn, and Instagram",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "dev:stable": "node scripts/dev-stable.js",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "pre-deploy": "node scripts/pre-deployment-check.js",
+    "build:analyze": "ANALYZE=true npm run build"
   },
+  "keywords": [
+    "ai",
+    "content-repurposing",
+    "social-media",
+    "twitter",
+    "linkedin",
+    "instagram",
+    "content-creation",
+    "nextjs",
+    "supabase",
+    "openai"
+  ],
+  "author": "ContentCraft Team",
+  "license": "MIT",
   "dependencies": {
     "@radix-ui/react-progress": "^1.1.7",
     "@radix-ui/react-select": "^2.2.6",

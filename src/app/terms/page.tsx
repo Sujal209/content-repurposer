@@ -34,7 +34,7 @@ export default function TermsOfServicePage() {
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
                 <Scale className="h-4 w-4 text-white" />
               </div>
-              <h1 className="text-xl font-bold gradient-text">Terms of Service</h1>
+              <h1 className="text-xl font-bold gradient-text">ContentCraft</h1>
             </Link>
             
             <div className="flex items-center gap-4">
@@ -64,7 +64,7 @@ export default function TermsOfServicePage() {
               Terms of Service
             </h1>
             <p className="text-xl text-muted max-w-2xl mx-auto mb-6">
-              These terms govern your use of ContentCraft. Please read them carefully before using our service.
+              These terms govern your use of ContentCraft's AI-powered content transformation service. Please read carefully before transforming your content.
             </p>
             <div className="flex items-center justify-center gap-4 text-sm text-muted">
               <span>Last updated: January 28, 2025</span>
@@ -98,8 +98,8 @@ export default function TermsOfServicePage() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-4 text-muted">
-                <p>ContentCraft is an AI-powered content transformation service that converts long-form content into social media posts optimized for different platforms (Twitter, LinkedIn, Instagram).</p>
-                <p>We provide both web interface and API access to our service. Features may vary between free and paid plans as described on our pricing page.</p>
+                <p>ContentCraft transforms your blog posts, articles, and long-form content into engaging social media posts using advanced AI. We support Twitter threads, LinkedIn carousels, and Instagram Reels with platform-specific optimization.</p>
+                <p>Our service includes real-time content analysis, readability scoring, engagement metrics, and content preferences customization. Usage limits apply based on your subscription plan.</p>
               </CardContent>
             </Card>
 
@@ -123,10 +123,11 @@ export default function TermsOfServicePage() {
                 </ul>
                 <h4 className="font-semibold text-foreground mt-6">Prohibited Uses:</h4>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Generating harmful, offensive, or illegal content</li>
-                  <li>Spamming or automated abuse of the service</li>
-                  <li>Violating platform policies of social media networks</li>
-                  <li>Infringing on others' copyrights or trademarks</li>
+                  <li>Generating harmful, offensive, or illegal content for social media</li>
+                  <li>Automated or bulk content generation beyond usage limits</li>
+                  <li>Creating content that violates Twitter, LinkedIn, or Instagram policies</li>
+                  <li>Transforming copyrighted content without proper rights</li>
+                  <li>Using the service to create misleading or deceptive content</li>
                 </ul>
               </CardContent>
             </Card>
@@ -156,10 +157,10 @@ export default function TermsOfServicePage() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-4 text-muted">
-                <p>You retain all rights to content you input into ContentCraft. We do not claim ownership of your content.</p>
-                <p>You grant us a limited license to process your content solely for the purpose of providing our service. We do not store or use your content for any other purpose.</p>
-                <p>ContentCraft's technology, software, and service are protected by copyright, trademark, and other intellectual property laws.</p>
-                <p>Generated output content belongs to you, but you are responsible for ensuring it doesn't infringe on third-party rights.</p>
+                <p>You retain complete ownership of all content you input into ContentCraft. We claim no rights to your original content or generated transformations.</p>
+                <p>You grant us a temporary, limited license to process your content solely for AI transformation. Content is processed in memory and immediately deleted after generation.</p>
+                <p>ContentCraft's AI algorithms, prompt engineering, and transformation technology are proprietary and protected by intellectual property laws.</p>
+                <p>All generated social media content belongs to you. You're responsible for ensuring transformed content doesn't infringe third-party rights and complies with platform policies.</p>
               </CardContent>
             </Card>
 
@@ -172,10 +173,10 @@ export default function TermsOfServicePage() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-4 text-muted">
-                <p>ContentCraft is provided "as is" without warranties of any kind. We do not guarantee uninterrupted service or error-free operation.</p>
-                <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, or consequential damages.</p>
-                <p>Our total liability shall not exceed the amount you paid us in the 12 months preceding the claim.</p>
-                <p>You are solely responsible for the content you generate and how you use it.</p>
+                <p>ContentCraft's AI transformations are provided "as is". We don't guarantee specific content quality, engagement rates, or transformation accuracy.</p>
+                <p>We're not liable for how social media platforms respond to your generated content or any engagement outcomes.</p>
+                <p>Our total liability is limited to the subscription fees you paid in the 12 months before any claim.</p>
+                <p>You're solely responsible for reviewing, editing, and using generated content appropriately on social media platforms.</p>
               </CardContent>
             </Card>
 
