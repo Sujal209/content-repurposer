@@ -236,11 +236,11 @@ export default function FeaturesTabs() {
                     <div className="space-y-4 sm:space-y-8">
                       {/* Benefits/Details */}
                       <div className="space-y-3 sm:space-y-6">
-                        {feature.benefits && (
+                        {(feature as any).benefits && (
                           <div>
                             <h4 className="font-bold text-white mb-3 sm:mb-4 text-base sm:text-lg">Key Benefits:</h4>
                             <ul className="space-y-2 sm:space-y-3">
-                              {feature.benefits.map((benefit, i) => (
+                              {(feature as any).benefits.map((benefit: string, i: number) => (
                                 <motion.li 
                                   key={i} 
                                   initial={{ opacity: 0, x: -20 }}
