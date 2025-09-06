@@ -70,7 +70,7 @@ const featureCategories = {
         benefits: ['30-second generation', '10+ posts per article', 'Batch processing'],
         timeComparison: {
           manual: '5+ hours per article',
-          RepuposeMate: '30 seconds per article',
+          RepurposeMate: '30 seconds per article',
           savings: '10x faster'
         }
       },
@@ -368,8 +368,8 @@ export default function FeaturesTabs() {
                                 <span className="font-bold text-red-800">{(feature as any).timeComparison.manual}</span>
                               </div>
                               <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg border border-green-200">
-                                <span className="text-green-700">RepuposeMate:</span>
-                                <span className="font-bold text-green-800">{(feature as any).timeComparison.RepuposeMate}</span>
+                                <span className="text-green-700">RepurposeMate:</span>
+                                <span className="font-bold text-green-800">{(feature as any).timeComparison.RepurposeMate}</span>
                               </div>
                               <div className="text-center p-2 bg-blue-50 rounded-lg border border-blue-200">
                                 <span className="text-blue-700 font-semibold">Result: {(feature as any).timeComparison.savings}</span>

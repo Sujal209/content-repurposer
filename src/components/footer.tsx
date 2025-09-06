@@ -13,23 +13,23 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <img 
                 src="/repurposemate-logo.png" 
-                alt="RepuposeMate logo" 
+                alt="RepurposeMate logo" 
                 className="w-8 h-8 object-contain drop-shadow-lg"
               />
-              <h3 className="text-lg font-bold text-heading">RepuposeMate</h3>
+              <h3 className="text-lg font-bold text-heading">RepurposeMate</h3>
             </div>
             <p className="text-sm text-muted max-w-xs">
               Transform your long-form content into engaging social media posts with AI. 
               Perfect for indie makers and content creators.
             </p>
             <div className="flex items-center gap-4">
-              <a href="https://twitter.com/RepuposeMate" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="RepuposeMate on Twitter">
+              <a href="https://twitter.com/RepurposeMate" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="RepurposeMate on Twitter">
                 <Twitter className="h-4 w-4" aria-hidden="true" />
               </a>
-              <a href="https://linkedin.com/company/RepuposeMate" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="RepuposeMate on LinkedIn">
+              <a href="https://linkedin.com/company/RepurposeMate" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="RepurposeMate on LinkedIn">
                 <Linkedin className="h-4 w-4" aria-hidden="true" />
               </a>
-              <a href="https://github.com/RepuposeMate/api" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="RepuposeMate on GitHub">
+              <a href="https://github.com/RepurposeMate/api" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors" aria-label="RepurposeMate on GitHub">
                 <Github className="h-4 w-4" aria-hidden="true" />
               </a>
               <Link href="/contact" className="text-muted hover:text-primary transition-colors" aria-label="Contact us">
@@ -108,7 +108,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-border mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-sm text-muted">
-            © {new Date().getFullYear()} RepuposeMate. All rights reserved.
+            © {new Date().getFullYear()} RepurposeMate. All rights reserved.
           </div>
           <div className="flex items-center gap-1 text-sm text-muted">
             <span>Built with</span>

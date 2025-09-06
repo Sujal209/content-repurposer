@@ -1,4 +1,4 @@
-# 🚀 RepuposeMate Deployment Checklist
+# 🚀 RepurposeMate Deployment Checklist
 
 ## **CRITICAL - Must Complete Before Deployment**
 

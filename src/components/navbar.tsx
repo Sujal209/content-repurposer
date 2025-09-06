@@ -87,10 +87,10 @@ export default function Navbar({ plan = 'free', remainingToday = 0, dailyLimit =
             <div className="flex items-center gap-3">
               <img 
                 src="/repurposemate-logo.png" 
-                alt="RepuposeMate logo" 
+                alt="RepurposeMate logo" 
                 className="w-10 h-10 object-contain drop-shadow-lg"
               />
-              <h1 className="text-xl font-bold gradient-text">RepuposeMate</h1>
+              <h1 className="text-xl font-bold gradient-text">RepurposeMate</h1>
             </div>
 
             {/* Desktop Navigation */}
@@ -187,7 +187,7 @@ export default function Navbar({ plan = 'free', remainingToday = 0, dailyLimit =
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-surface/50">
                     <img 
                       src="/repurposemate-logo.png" 
-                      alt="RepuposeMate" 
+                      alt="RepurposeMate" 
                       className="w-10 h-10 object-contain drop-shadow-lg"
                     />
                     <div className="flex-1 min-w-0">

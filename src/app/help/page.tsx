@@ -36,14 +36,14 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     id: '1',
-    question: 'How do I get started with RepuposeMate?',
+    question: 'How do I get started with RepurposeMate?',
     answer: 'Getting started is easy! Sign up for a free account, paste your long-form content into the dashboard, select your desired output formats (Twitter Threads, LinkedIn Carousels, Instagram Reels), and click Transform. Our AI will generate engaging social media posts optimized for each platform.',
     category: 'Getting Started'
   },
   {
     id: '2',
-    question: 'What types of content work best with RepuposeMate?',
-    answer: 'RepuposeMate works excellently with blog posts, articles, newsletters, case studies, tutorials, and any long-form written content. The ideal length is between 500-10,000 characters for best transformation results.',
+    question: 'What types of content work best with RepurposeMate?',
+    answer: 'RepurposeMate works excellently with blog posts, articles, newsletters, case studies, tutorials, and any long-form written content. The ideal length is between 500-10,000 characters for best transformation results.',
     category: 'Getting Started'
   },
   {
@@ -72,8 +72,8 @@ const faqData: FAQItem[] = [
   },
   {
     id: '7',
-    question: 'What languages does RepuposeMate support?',
-    answer: 'Currently, RepuposeMate works best with English content. We\'re working on expanding language support and will announce new languages as they become available.',
+    question: 'What languages does RepurposeMate support?',
+    answer: 'Currently, RepurposeMate works best with English content. We\'re working on expanding language support and will announce new languages as they become available.',
     category: 'Features'
   },
   {
@@ -99,7 +99,7 @@ const faqData: FAQItem[] = [
 const tutorials = [
   {
     title: 'Quick Start Guide',
-    description: 'Get up and running with RepuposeMate in under 5 minutes',
+    description: 'Get up and running with RepurposeMate in under 5 minutes',
     duration: '3 min read',
     icon: Zap,
     link: '#'
@@ -152,7 +152,7 @@ export default function HelpCenterPage() {
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
                 <HelpCircle className="h-4 w-4 text-white" />
               </div>
-              <h1 className="text-xl font-bold gradient-text">RepuposeMate</h1>
+              <h1 className="text-xl font-bold gradient-text">RepurposeMate</h1>
             </Link>
             
             <Button variant="outline" onClick={() => window.location.href = '/contact'}>
@@ -176,7 +176,7 @@ export default function HelpCenterPage() {
               How can we help you?
             </h1>
             <p className="text-xl text-muted mb-8">
-              Find answers to common questions and learn how to get the most out of RepuposeMate
+              Find answers to common questions and learn how to get the most out of RepurposeMate
             </p>
             
             {/* Search Bar */}
@@ -218,7 +218,7 @@ export default function HelpCenterPage() {
                 </div>
                 <CardTitle className="text-lg">Community</CardTitle>
                 <CardDescription>
-                  Connect with other RepuposeMate users
+                  Connect with other RepurposeMate users
                 </CardDescription>
               </CardHeader>
             </Card>

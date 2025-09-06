@@ -1,4 +1,4 @@
-# RepuposeMate - AI-Powered Content Repurposer
+# RepurposeMate - AI-Powered Content Repurposer
 
 🚀 **Transform your long-form content into engaging social media posts with AI**
 

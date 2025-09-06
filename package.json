@@ -1,5 +1,5 @@
 {
-  "name": "RepuposeMate",
+  "name": "RepurposeMate",
   "version": "1.0.0",
   "description": "AI-powered content repurposing tool that transforms long-form content into engaging social media posts for Twitter, LinkedIn, and Instagram",
   "private": true,
@@ -24,7 +24,7 @@
     "supabase",
     "openai"
   ],
-  "author": "RepuposeMate Team",
+  "author": "RepurposeMate Team",
   "license": "MIT",
   "dependencies": {
     "@radix-ui/react-progress": "^1.1.7",

@@ -12,12 +12,12 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
-  title: "RepuposeMate - AI-Powered Content Repurposer",
+  title: "RepurposeMate - AI-Powered Content Repurposer",
   description: "Transform your long-form content into engaging social media posts with AI. Perfect for indie makers, solopreneurs, and content creators.",
   keywords: ["content repurposing", "AI content", "social media", "indie makers", "content creation"],
-  authors: [{ name: "RepuposeMate" }],
-  creator: "RepuposeMate",
-  publisher: "RepuposeMate",
+  authors: [{ name: "RepurposeMate" }],
+  creator: "RepurposeMate",
+  publisher: "RepurposeMate",
   icons: {
     icon: "/repurposemate-logo.png",
     shortcut: "/repurposemate-logo.png",
@@ -26,24 +26,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://RepuposeMate.ai",
-    title: "RepuposeMate - AI-Powered Content Repurposer",
+    url: "https://RepurposeMate.ai",
+    title: "RepurposeMate - AI-Powered Content Repurposer",
     description: "Transform your long-form content into engaging social media posts with AI.",
-    siteName: "RepuposeMate",
+    siteName: "RepurposeMate",
     images: [
       {
         url: "/repurposemate-logo.png",
         width: 1200,
         height: 630,
-        alt: "RepuposeMate - AI-Powered Content Repurposer",
+        alt: "RepurposeMate - AI-Powered Content Repurposer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "RepuposeMate - AI-Powered Content Repurposer",
+    title: "RepurposeMate - AI-Powered Content Repurposer",
     description: "Transform your long-form content into engaging social media posts with AI.",
-    creator: "@RepuposeMate",
+    creator: "@RepurposeMate",
     images: ["/repurposemate-logo.png"],
   },
 };

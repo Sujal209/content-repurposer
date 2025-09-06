@@ -12,7 +12,7 @@ const creators = [
     followers: "45K",
     growth: "+300% in 3 months",
     avatar: "AJ",
-    story: "Went from 15K to 45K followers using RepuposeMate to repurpose technical blog posts into engaging Twitter threads.",
+    story: "Went from 15K to 45K followers using RepurposeMate to repurpose technical blog posts into engaging Twitter threads.",
     platform: "Twitter"
   },
   {
@@ -49,7 +49,7 @@ export default function CreatorShowcase() {
         >
           <h2 className="text-4xl font-bold mb-4 text-white">Creator Success Stories</h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Real creators, real results. See how RepuposeMate helped them scale their audience.
+            Real creators, real results. See how RepurposeMate helped them scale their audience.
           </p>
         </motion.div>
 
