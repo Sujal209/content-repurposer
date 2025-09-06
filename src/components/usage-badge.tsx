@@ -7,7 +7,6 @@ import { useProductionAuth } from "@/lib/auth-context-production"
 type Plan = "free" | "pro" | "enterprise"
 
 export default function UsageBadge({ className = "" }: { className?: string }) {
-  const supabase = createProductionClient()
   const { user } = useProductionAuth()
   const [plan, setPlan] = useState<Plan>("free")
   const [remaining, setRemaining] = useState<number | null>(null)
@@ -16,6 +15,7 @@ export default function UsageBadge({ className = "" }: { className?: string }) {
   useEffect(() => {
     const load = async () => {
       if (!user) return
+      const supabase = createProductionClient()
       const meta = (user.user_metadata || {}) as Record<string, any>
       const p = (meta.plan as Plan) || "free"
       setPlan(p)
@@ -40,7 +40,7 @@ export default function UsageBadge({ className = "" }: { className?: string }) {
       setRemaining(Math.max(lim - used, 0))
     }
     load()
-  }, [user, supabase])
+  }, [user])
 
   if (!user) return null
   if (remaining == null || limit == null) {

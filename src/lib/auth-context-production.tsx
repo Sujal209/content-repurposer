@@ -22,7 +22,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 export function ProductionAuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
-  const supabase = createProductionClient()
+  const supabaseRef = useRef<ReturnType<typeof createProductionClient> | null>(null)
   const initializationAttempted = useRef(false)
   const lastAuthAttempt = useRef(0)
   const MIN_AUTH_INTERVAL = 5000 // 5 seconds minimum between auth attempts
@@ -36,6 +36,13 @@ export function ProductionAuthProvider({ children }: { children: React.ReactNode
 
   const recordAuthAttempt = () => {
     lastAuthAttempt.current = Date.now()
+  }
+
+  const getSupabase = () => {
+    if (!supabaseRef.current) {
+      supabaseRef.current = createProductionClient()
+    }
+    return supabaseRef.current
   }
 
   useEffect(() => {
@@ -57,6 +64,7 @@ export function ProductionAuthProvider({ children }: { children: React.ReactNode
           return
         }
 
+        const supabase = getSupabase()
         // If no cached session, try to get from Supabase
         const { data: { session }, error } = await supabase.auth.getSession()
         
@@ -83,6 +91,7 @@ export function ProductionAuthProvider({ children }: { children: React.ReactNode
     initializeAuth()
 
     // Listen for auth changes with error handling
+    const supabase = getSupabase()
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         if (!mounted) return
@@ -109,7 +118,7 @@ export function ProductionAuthProvider({ children }: { children: React.ReactNode
       mounted = false
       subscription.unsubscribe()
     }
-  }, [supabase.auth])
+  }, [])
 
   const signIn = async (email: string, password: string) => {
     if (!canAttemptAuth()) {
@@ -130,6 +139,7 @@ export function ProductionAuthProvider({ children }: { children: React.ReactNode
 
       console.log('🔐 Attempting sign in...')
       
+      const supabase = getSupabase()
       const { data, error } = await supabase.auth.signInWithPassword({
         email: email.trim().toLowerCase(),
         password,
@@ -184,6 +194,7 @@ export function ProductionAuthProvider({ children }: { children: React.ReactNode
 
       console.log('📝 Attempting sign up...')
 
+      const supabase = getSupabase()
       const { data, error } = await supabase.auth.signUp({
         email: email.trim().toLowerCase(),
         password,
@@ -220,6 +231,7 @@ export function ProductionAuthProvider({ children }: { children: React.ReactNode
 
     try {
       const redirectTo = `${window.location.origin}/dashboard`
+      const supabase = getSupabase()
       const { error } = await supabase.auth.signInWithOAuth({
         provider,
         options: {
@@ -257,6 +269,7 @@ export function ProductionAuthProvider({ children }: { children: React.ReactNode
         return { error: 'Please enter a valid email address' }
       }
       
+      const supabase = getSupabase()
       const { error } = await supabase.auth.signInWithOtp({
         email: email.trim().toLowerCase(),
         options: {
@@ -280,7 +293,8 @@ export function ProductionAuthProvider({ children }: { children: React.ReactNode
 
   const signOut = async () => {
     try {
-      console.log('🚪 Signing out...')
+      console.log('🚺 Signing out...')
+      const supabase = getSupabase()
       await supabase.auth.signOut()
       setUser(null)
       console.log('✅ Sign out successful')
