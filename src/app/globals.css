@@ -503,6 +503,7 @@ body::before {
   .mobile-touch-target {
     min-height: 44px;
     min-width: 44px;
+    padding: 0.75rem;
   }
 
   /* Better mobile text sizing */
@@ -518,6 +519,37 @@ body::before {
   /* Better mobile card padding */
   .mobile-card-padding {
     padding: 1rem;
+  }
+
+  /* Mobile hamburger menu */
+  .mobile-menu {
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Mobile button improvements */
+  button {
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Mobile grid improvements */
+  .mobile-grid-fix {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Mobile text improvements */
+  .mobile-text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  /* Mobile container improvements */
+  .mobile-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   /* Mobile-friendly animations (reduced motion) */
@@ -790,9 +822,42 @@ textarea:valid {
 @media (max-width: 640px) {
   .fixed.top-4.right-4 {
     top: 1rem !important;
-    right: 1rem !important;
     left: 1rem !important;
     right: 1rem !important;
+  }
+
+  /* Mobile modal improvements */
+  .modal-content {
+    margin: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+
+  /* Mobile form improvements */
+  input, textarea, select {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+
+  /* Mobile navigation improvements */
+  .mobile-nav-item {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Mobile card stack */
+  .mobile-card-stack > * {
+    margin-bottom: 1rem;
+  }
+
+  /* Mobile button group */
+  .mobile-button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mobile-button-group button {
+    width: 100%;
   }
 }
 

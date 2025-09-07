@@ -27,6 +27,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useProductionAuth } from '@/lib/auth-context-production'
 import Footer from '@/components/footer'
+import Navbar from '@/components/navbar'
 import { createProductionClient } from '@/lib/supabase-production'
 import { useToast } from '@/components/ui/toast'
 import { Loading } from '@/components/ui/loading'
@@ -71,7 +72,7 @@ export default function Dashboard() {
   const [isGenerating, setIsGenerating] = useState(false)
   const [generatedContent, setGeneratedContent] = useState<GeneratedContent[]>([])
   const [wordCount, setWordCount] = useState(0)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
   const [contentPreferences, setContentPreferences] = useState<ContentPreferencesType>({})
   const [currentAnalysis, setCurrentAnalysis] = useState<ContentAnalysis | null>(null)
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
@@ -281,163 +282,11 @@ export default function Dashboard() {
       {/* Animated background elements */}
       <div className="data-lines" />
       <div className="absolute inset-0 bg-gradient-to-br from-background via-surface/5 to-background" />
-      {/* Header */}
-      <header className="border-b border-border bg-card-bg/80 backdrop-blur-xl relative z-10">
-        <div className="container mx-auto px-4 sm:px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <img 
-                src="/repurposemate-logo.png" 
-                alt="RepurposeMate logo" 
-                className="w-10 h-10 object-contain drop-shadow-lg"
-              />
-              <h1 className="text-xl font-bold gradient-text">RepurposeMate</h1>
-            </div>
-            
-            <div className="flex items-center gap-2 sm:gap-4">
-              {/* Desktop Navigation */}
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => router.push('/pricing')}
-                className="hidden sm:flex text-muted hover:text-foreground"
-              >
-                Pricing
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => router.push('/history')}
-                className="hidden sm:flex text-muted hover:text-foreground"
-              >
-                Library
-              </Button>
-              <div className="hidden lg:flex items-center gap-4 text-xs text-muted">
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-1 rounded bg-gray-100 text-gray-800">Plan: {plan.toUpperCase()}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-1 rounded bg-gray-100 text-gray-800">Remaining: {remainingToday}/{dailyLimit}</span>
-                </div>
-              </div>
-              <div className="hidden sm:flex items-center gap-2 text-sm text-muted">
-                <User className="h-4 w-4" />
-                <span className="hidden md:inline">{user?.email}</span>
-              </div>
-              <Button
-                variant="outline"
-                size="sm"
-                className="hidden sm:flex"
-                onClick={() => router.push('/settings')}
-              >
-                <Settings className="h-4 w-4 sm:mr-2" />
-                <span className="hidden sm:inline">Settings</span>
-              </Button>
-              <Button variant="ghost" size="sm" onClick={handleSignOut} className="hidden sm:flex">
-                <LogOut className="h-4 w-4 mr-2" />
-                Sign Out
-              </Button>
-              
-              {/* Mobile Menu Button */}
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="sm:hidden text-muted hover:text-foreground p-2"
-              >
-                {isMobileMenuOpen ? (
-                  <X className="h-5 w-5" />
-                ) : (
-                  <Menu className="h-5 w-5" />
-                )}
-              </Button>
-            </div>
-          </div>
-        </div>
-        
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="sm:hidden border-t border-border bg-card-bg/95 backdrop-blur-xl"
-            >
-              <div className="px-4 py-4 space-y-3">
-                {/* User Info */}
-                {user?.email && (
-                  <div className="flex items-center gap-3 p-3 rounded-lg bg-surface/50">
-                    <img 
-                      src="/repurposemate-logo.png" 
-                      alt="RepurposeMate" 
-                      className="w-10 h-10 object-contain drop-shadow-lg"
-                    />
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-heading truncate">{user.email}</p>
-                      <div className="flex items-center gap-2 mt-1">
-                        <span className="px-2 py-0.5 text-xs rounded bg-primary/20 text-primary border border-primary/30">
-                          {plan.toUpperCase()}
-                        </span>
-                        <span className="px-2 py-0.5 text-xs rounded bg-surface text-muted border border-border">
-                          {remainingToday}/{dailyLimit} left
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Navigation Items */}
-                <div className="space-y-1">
-                  <button
-                    onClick={() => {
-                      router.push('/pricing')
-                      setIsMobileMenuOpen(false)
-                    }}
-                    className="w-full flex items-center gap-3 p-3 rounded-lg text-left hover:bg-surface/50 transition-colors"
-                  >
-                    <span className="text-heading">Pricing</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      router.push('/history')
-                      setIsMobileMenuOpen(false)
-                    }}
-                    className="w-full flex items-center gap-3 p-3 rounded-lg text-left hover:bg-surface/50 transition-colors"
-                  >
-                    <span className="text-heading">Library</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      router.push('/settings')
-                      setIsMobileMenuOpen(false)
-                    }}
-                    className="w-full flex items-center gap-3 p-3 rounded-lg text-left hover:bg-surface/50 transition-colors"
-                  >
-                    <Settings className="h-5 w-5 text-muted" />
-                    <span className="text-heading">Settings</span>
-                  </button>
-                </div>
-
-                {/* Sign Out */}
-                <div className="pt-3 border-t border-border">
-                  <button
-                    onClick={() => {
-                      handleSignOut()
-                      setIsMobileMenuOpen(false)
-                    }}
-                    className="w-full flex items-center gap-3 p-3 rounded-lg text-left hover:bg-red-500/10 text-red-400 hover:text-red-300 transition-colors"
-                  >
-                    <LogOut className="h-5 w-5" />
-                    <span>Sign Out</span>
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
+      <Navbar 
+        plan={plan}
+        remainingToday={remainingToday}
+        dailyLimit={dailyLimit}
+      />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-4 sm:space-y-6 flex-1">
         {/* Breadcrumb Navigation */}
@@ -447,7 +296,7 @@ export default function Dashboard() {
         />
         
         {/* Top Row: Your Content and Output Formats */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 p-[10px]">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {/* Input Section */}
           <div className="lg:col-span-2">
             <motion.div
@@ -470,7 +319,7 @@ export default function Dashboard() {
                     value={inputContent}
                     onChange={(e) => handleInputChange(e.target.value)}
                     placeholder="Paste your long-form content here... (blog posts, video scripts, podcast transcripts)"
-                    className="flex-1 min-h-[200px] sm:min-h-[300px] w-full p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-base mobile-text-base"
+                    className="flex-1 min-h-[200px] sm:min-h-[300px] w-full p-3 sm:p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-base"
                   />
                   <div className="flex justify-between items-center text-sm text-muted">
                     <span>{wordCount} words</span>
@@ -617,14 +466,14 @@ export default function Dashboard() {
                 )}
                 
                 {generatedContent.length > 0 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 w-full">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 w-full">
                     {generatedContent.map((item, index) => (
                       <motion.div
                         key={item.type}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="border border-border rounded-xl p-5 sm:p-6 bg-card-bg shadow-sm hover:shadow-md transition-shadow"
+                        className="border border-border rounded-xl p-4 sm:p-5 lg:p-6 bg-card-bg shadow-sm hover:shadow-md transition-shadow"
                       >
                         <div className="flex items-start justify-between mb-5 gap-3">
                           <div className="flex items-center gap-3 min-w-0 flex-1">

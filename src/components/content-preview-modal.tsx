@@ -17,7 +17,6 @@ import {
   FileText,
   Zap,
   CheckCircle,
-  Edit3,
   Maximize2,
   Minimize2,
   Trash2
@@ -122,35 +121,35 @@ export function ContentPreviewModal({
       size={isExpanded ? "full" : "xl"}
       title=""
       showHeader={false}
-      className="max-h-[95vh] sm:max-h-[90vh] cyber-glass"
+      className="max-h-[95vh] sm:max-h-[90vh] w-[95vw] sm:w-auto cyber-glass"
     >
       <div className="relative">
         {/* Custom Header */}
-        <div className="flex items-center justify-between p-6 border-b border-border/50">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-border/50">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
             <motion.div 
-              className={`w-12 h-12 rounded-xl ${platform.color} flex items-center justify-center shadow-lg`}
+              className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl ${platform.color} flex items-center justify-center shadow-lg flex-shrink-0`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <platform.icon className="h-6 w-6 text-white" />
+              <platform.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
             </motion.div>
-            <div>
-              <h2 className="text-xl font-bold gradient-text">
+            <div className="min-w-0 flex-1">
+              <h2 className="text-lg sm:text-xl font-bold gradient-text truncate">
                 Content Preview
               </h2>
-              <p className="text-sm text-muted">
+              <p className="text-xs sm:text-sm text-muted truncate">
                 {platform.name} • {new Date(content.created_at).toLocaleDateString()}
               </p>
             </div>
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsExpanded(!isExpanded)}
-              className="text-muted hover:text-primary"
+              className="text-muted hover:text-primary p-2"
             >
               {isExpanded ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
             </Button>
@@ -158,57 +157,57 @@ export function ContentPreviewModal({
               variant="ghost"
               size="sm"
               onClick={onClose}
-              className="text-muted hover:text-primary"
+              className="text-muted hover:text-primary p-2"
             >
               ×
             </Button>
           </div>
         </div>
 
-        <div className="space-y-6 max-h-[calc(95vh-8rem)] sm:max-h-[calc(90vh-8rem)] overflow-y-auto p-6">
+        <div className="space-y-4 sm:space-y-6 max-h-[calc(95vh-8rem)] sm:max-h-[calc(90vh-8rem)] overflow-y-auto p-4 sm:p-6">
           {/* Enhanced Header Info */}
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
             <Card className="bg-gradient-to-br from-blue-500/10 to-blue-600/5 border-blue-500/20">
-              <CardContent className="p-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-500/20 rounded-lg">
-                    <FileText className="h-4 w-4 text-blue-400" />
+              <CardContent className="p-3 sm:p-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="p-1.5 sm:p-2 bg-blue-500/20 rounded-lg flex-shrink-0">
+                    <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-blue-400" />
                   </div>
-                  <div>
-                    <p className="text-sm font-medium text-heading">{content.title || 'Untitled Content'}</p>
-                    <p className="text-xs text-muted">{platform.description}</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs sm:text-sm font-medium text-heading truncate">{content.title || 'Untitled Content'}</p>
+                    <p className="text-xs text-muted truncate">{platform.description}</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
             
             <Card className="bg-gradient-to-br from-purple-500/10 to-purple-600/5 border-purple-500/20">
-              <CardContent className="p-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-purple-500/20 rounded-lg">
-                    <Clock className="h-4 w-4 text-purple-400" />
+              <CardContent className="p-3 sm:p-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="p-1.5 sm:p-2 bg-purple-500/20 rounded-lg flex-shrink-0">
+                    <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-purple-400" />
                   </div>
-                  <div>
-                    <p className="text-sm font-medium text-heading">{readingTime} min read</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs sm:text-sm font-medium text-heading">{readingTime} min read</p>
                     <p className="text-xs text-muted">Estimated time</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
             
-            <Card className="bg-gradient-to-br from-green-500/10 to-green-600/5 border-green-500/20">
-              <CardContent className="p-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-green-500/20 rounded-lg">
-                    <Zap className="h-4 w-4 text-green-400" />
+            <Card className="bg-gradient-to-br from-green-500/10 to-green-600/5 border-green-500/20 sm:col-span-2 lg:col-span-1">
+              <CardContent className="p-3 sm:p-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="p-1.5 sm:p-2 bg-green-500/20 rounded-lg flex-shrink-0">
+                    <Zap className="h-3 w-3 sm:h-4 sm:w-4 text-green-400" />
                   </div>
-                  <div>
-                    <p className="text-sm font-medium text-heading">AI Generated</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs sm:text-sm font-medium text-heading">AI Generated</p>
                     <p className="text-xs text-muted">High quality</p>
                   </div>
                 </div>
@@ -230,33 +229,33 @@ export function ContentPreviewModal({
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
                   <motion.div 
-                    className="text-center p-4 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl border border-primary/20 hover:border-primary/40 transition-all duration-300"
+                    className="text-center p-3 sm:p-4 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl border border-primary/20 hover:border-primary/40 transition-all duration-300"
                     whileHover={{ scale: 1.02, y: -2 }}
                   >
-                    <div className="text-2xl font-bold text-primary mb-1">{stats.words}</div>
+                    <div className="text-xl sm:text-2xl font-bold text-primary mb-1">{stats.words}</div>
                     <div className="text-xs text-muted uppercase tracking-wide">Words</div>
                   </motion.div>
                   <motion.div 
-                    className="text-center p-4 bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-xl border border-secondary/20 hover:border-secondary/40 transition-all duration-300"
+                    className="text-center p-3 sm:p-4 bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-xl border border-secondary/20 hover:border-secondary/40 transition-all duration-300"
                     whileHover={{ scale: 1.02, y: -2 }}
                   >
-                    <div className="text-2xl font-bold text-secondary mb-1">{stats.chars}</div>
+                    <div className="text-xl sm:text-2xl font-bold text-secondary mb-1">{stats.chars}</div>
                     <div className="text-xs text-muted uppercase tracking-wide">Characters</div>
                   </motion.div>
                   <motion.div 
-                    className="text-center p-4 bg-gradient-to-br from-accent/10 to-accent/5 rounded-xl border border-accent/20 hover:border-accent/40 transition-all duration-300"
+                    className="text-center p-3 sm:p-4 bg-gradient-to-br from-accent/10 to-accent/5 rounded-xl border border-accent/20 hover:border-accent/40 transition-all duration-300"
                     whileHover={{ scale: 1.02, y: -2 }}
                   >
-                    <div className="text-2xl font-bold text-accent mb-1">{stats.sentences}</div>
+                    <div className="text-xl sm:text-2xl font-bold text-accent mb-1">{stats.sentences}</div>
                     <div className="text-xs text-muted uppercase tracking-wide">Sentences</div>
                   </motion.div>
                   <motion.div 
-                    className="text-center p-4 bg-gradient-to-br from-purple-500/10 to-purple-500/5 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300"
+                    className="text-center p-3 sm:p-4 bg-gradient-to-br from-purple-500/10 to-purple-500/5 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300"
                     whileHover={{ scale: 1.02, y: -2 }}
                   >
-                    <div className="text-2xl font-bold text-purple-400 mb-1">{stats.hashtags}</div>
+                    <div className="text-xl sm:text-2xl font-bold text-purple-400 mb-1">{stats.hashtags}</div>
                     <div className="text-xs text-muted uppercase tracking-wide">Hashtags</div>
                   </motion.div>
                 </div>
@@ -284,39 +283,23 @@ export function ContentPreviewModal({
                     <Button
                       variant="ghost"
                       size="sm"
+                      onClick={handleCopy}
                       className="text-muted hover:text-primary"
                     >
-                      <Edit3 className="h-4 w-4" />
+                      {copied ? (
+                        <CheckCircle className="h-4 w-4 text-green-400" />
+                      ) : (
+                        <Copy className="h-4 w-4" />
+                      )}
                     </Button>
                   </div>
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="relative">
-                  <div className="bg-gradient-to-br from-surface/40 to-surface/20 rounded-xl p-6 border border-border/50 backdrop-blur-sm max-h-64 overflow-y-auto custom-scrollbar">
-                    <pre className="whitespace-pre-wrap text-sm leading-relaxed text-foreground font-mono selection:bg-primary/20">
-                      {content.content}
-                    </pre>
-                  </div>
-                  <div className="absolute top-3 right-3">
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={handleCopy}
-                        className="bg-surface/80 backdrop-blur-sm border border-border/50 hover:border-primary/50"
-                      >
-                        {copied ? (
-                          <CheckCircle className="h-4 w-4 text-green-400" />
-                        ) : (
-                          <Copy className="h-4 w-4" />
-                        )}
-                      </Button>
-                    </motion.div>
-                  </div>
+                <div className="bg-gradient-to-br from-surface/40 to-surface/20 rounded-xl p-4 sm:p-6 border border-border/50 backdrop-blur-sm max-h-48 sm:max-h-64 overflow-y-auto custom-scrollbar">
+                  <pre className="whitespace-pre-wrap text-xs sm:text-sm leading-relaxed text-foreground font-mono selection:bg-primary/20">
+                    {content.content}
+                  </pre>
                 </div>
               </CardContent>
             </Card>
@@ -337,7 +320,7 @@ export function ContentPreviewModal({
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2 sm:gap-3">
                     <AnimatePresence>
                       {(content.content.match(/#[\w]+/g) || []).map((hashtag, index) => (
                         <motion.div
@@ -364,34 +347,34 @@ export function ContentPreviewModal({
           
           {/* Enhanced Additional Actions - INSIDE scrollable area like share content */}
           <motion.div 
-            className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 border-t border-border/50"
+            className="flex flex-col gap-4 pt-4 sm:pt-6 border-t border-border/50"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <div className="flex items-center gap-4 text-sm text-muted order-2 sm:order-1">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted">
               <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4 text-primary" />
-                <span>Created {new Date(content.created_at).toLocaleDateString()}</span>
+                <Calendar className="h-3 w-3 sm:h-4 sm:w-4 text-primary flex-shrink-0" />
+                <span className="truncate">Created {new Date(content.created_at).toLocaleDateString()}</span>
               </div>
               <div className="hidden sm:flex items-center gap-2">
-                <Clock className="h-4 w-4 text-secondary" />
-                <span>{new Date(content.created_at).toLocaleTimeString()}</span>
+                <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-secondary flex-shrink-0" />
+                <span className="truncate">{new Date(content.created_at).toLocaleTimeString()}</span>
               </div>
             </div>
             
-            <div className="flex items-center justify-center sm:justify-end gap-3 order-1 sm:order-2">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <div className="grid grid-cols-2 sm:flex sm:items-center sm:justify-end gap-2 sm:gap-3">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="col-span-2 sm:col-span-1">
                 <Button
                   variant="cyber"
                   size="sm"
                   onClick={handleCopy}
-                  className="flex items-center gap-2 px-4 py-2"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm"
                 >
                   {copied ? (
-                    <CheckCircle className="h-4 w-4" />
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4" />
                   ) : (
-                    <Copy className="h-4 w-4" />
+                    <Copy className="h-3 w-3 sm:h-4 sm:w-4" />
                   )}
                   <span>{copied ? 'Copied!' : 'Copy'}</span>
                 </Button>
@@ -402,9 +385,9 @@ export function ContentPreviewModal({
                   variant="outline"
                   size="sm"
                   onClick={handleDownload}
-                  className="flex items-center gap-2 px-4 py-2 hover:border-accent/50 hover:text-accent"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-3 sm:px-4 py-2 hover:border-accent/50 hover:text-accent text-xs sm:text-sm"
                 >
-                  <Download className="h-4 w-4" />
+                  <Download className="h-3 w-3 sm:h-4 sm:w-4" />
                   <span>Download</span>
                 </Button>
               </motion.div>
@@ -415,9 +398,9 @@ export function ContentPreviewModal({
                     variant="gradient"
                     size="sm"
                     onClick={() => onShare(content)}
-                    className="flex items-center gap-2 px-4 py-2"
+                    className="w-full sm:w-auto flex items-center justify-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm"
                   >
-                    <Share2 className="h-4 w-4" />
+                    <Share2 className="h-3 w-3 sm:h-4 sm:w-4" />
                     <span>Share</span>
                   </Button>
                 </motion.div>
@@ -432,9 +415,9 @@ export function ContentPreviewModal({
                       onDelete(content.id)
                       onClose()
                     }}
-                    className="flex items-center gap-2 px-4 py-2"
+                    className="w-full sm:w-auto flex items-center justify-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm"
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
                     <span>Delete</span>
                   </Button>
                 </motion.div>

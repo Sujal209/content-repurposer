@@ -581,7 +581,7 @@ export default function HistoryPage() {
       </div>
 
       {/* Controls Group */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
         {/* Platform Filter */}
         <select
           value={contentType}
@@ -673,7 +673,7 @@ export default function HistoryPage() {
 
         {/* View Mode */}
         <div className="flex items-center gap-1 border border-gray-700 rounded-xl 
-                        bg-gray-800/70 shadow-md p-1">
+                        bg-gray-800/70 shadow-md p-1 order-last sm:order-none">
           <button
             onClick={() => setViewMode('grid')}
             className={`p-2 rounded-lg transition-colors ${

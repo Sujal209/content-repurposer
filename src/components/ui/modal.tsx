@@ -19,11 +19,11 @@ interface ModalProps {
 }
 
 const sizeClasses = {
-  sm: 'max-w-md',
-  md: 'max-w-lg',
-  lg: 'max-w-2xl',
-  xl: 'max-w-4xl',
-  full: 'max-w-7xl'
+  sm: 'max-w-md w-[90vw] sm:w-auto',
+  md: 'max-w-lg w-[90vw] sm:w-auto',
+  lg: 'max-w-2xl w-[95vw] sm:w-auto',
+  xl: 'max-w-4xl w-[95vw] sm:w-auto',
+  full: 'max-w-7xl w-[98vw] sm:w-auto'
 }
 
 export function Modal({
@@ -63,7 +63,7 @@ export function Modal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4"
         >
           {/* Overlay */}
           <motion.div
@@ -81,20 +81,20 @@ export function Modal({
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.2 }}
             className={cn(
-              'relative z-10 w-full bg-card-bg border border-border rounded-xl shadow-2xl',
+              'relative z-10 bg-card-bg border border-border rounded-xl shadow-2xl max-h-[95vh] overflow-hidden',
               sizeClasses[size],
               className
             )}
           >
             {showHeader && (
-              <div className="flex items-center justify-between p-6 border-b border-border">
-                <h2 className="text-xl font-semibold text-heading">{title}</h2>
+              <div className="flex items-center justify-between p-4 sm:p-6 border-b border-border">
+                <h2 className="text-lg sm:text-xl font-semibold text-heading truncate pr-2">{title}</h2>
                 {showCloseButton && (
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={onClose}
-                    className="text-muted hover:text-foreground"
+                    className="text-muted hover:text-foreground flex-shrink-0"
                   >
                     <X className="h-4 w-4" />
                   </Button>
@@ -102,7 +102,10 @@ export function Modal({
               </div>
             )}
             
-            <div className={cn(showHeader ? 'p-6 pt-0' : 'p-6')}>
+            <div className={cn(
+              'overflow-y-auto',
+              showHeader ? 'p-4 sm:p-6 pt-0' : 'p-4 sm:p-6'
+            )}>
               {children}
             </div>
           </motion.div>

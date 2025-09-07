@@ -15,7 +15,6 @@ import {
   CheckCircle,
   ExternalLink,
   Globe,
-  Zap
 } from 'lucide-react'
 import { Modal } from '@/components/ui/modal'
 import { Button } from '@/components/ui/button'
@@ -97,29 +96,10 @@ export function ShareContentModal({
   content,
   onShare
 }: ShareContentModalProps) {
-  const [shareUrl, setShareUrl] = useState('')
-  const [copied, setCopied] = useState(false)
   const [contentCopied, setContentCopied] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('all')
-  useEffect(() => {
-    if (content && isOpen) {
-      // Generate a share URL (you might want to implement actual URL sharing)
-      const url = `${window.location.origin}/shared/${content.id}`
-      setShareUrl(url)
-    }
-  }, [content, isOpen])
 
   if (!content) return null
-
-  const handleCopyUrl = async () => {
-    try {
-      await navigator.clipboard.writeText(shareUrl)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    } catch (error) {
-      console.error('Failed to copy:', error)
-    }
-  }
 
   const handleCopyContent = async () => {
     try {
@@ -133,7 +113,7 @@ export function ShareContentModal({
 
   const handlePlatformShare = (platform: string) => {
     const text = encodeURIComponent(content.content)
-    const url = encodeURIComponent(shareUrl)
+    const url = encodeURIComponent(window.location.href)
     const title = encodeURIComponent(content.title || 'Check out this content')
 
     let shareLink = ''
@@ -186,11 +166,11 @@ export function ShareContentModal({
       size="lg"
       title=""
       showHeader={false}
-      className="max-h-[95vh] sm:max-h-[90vh] cyber-glass"
+      className="max-h-[90vh] cyber-glass mx-2 sm:mx-0"
     >
       <div className="relative">
         {/* Custom Header */}
-        <div className="flex items-center justify-between p-6 border-b border-border/50">
+        <div className="flex items-center justify-between p-3 sm:p-6 border-b border-border/50">
           <div className="flex items-center gap-3">
             <motion.div 
               className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg"
@@ -219,7 +199,7 @@ export function ShareContentModal({
           </Button>
         </div>
 
-        <div className="space-y-6 max-h-[calc(95vh-8rem)] sm:max-h-[calc(90vh-8rem)] overflow-y-auto p-6">
+        <div className="space-y-3 sm:space-y-6 max-h-[calc(90vh-6rem)] overflow-y-auto p-3 sm:p-6">
           {/* Enhanced Content Preview */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -227,9 +207,9 @@ export function ShareContentModal({
             transition={{ delay: 0.1 }}
           >
             <Card className="neon-glow-blue">
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  <span className="gradient-text-accent">Content Preview</span>
+              <CardHeader className="pb-2 sm:pb-4">
+                <CardTitle className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <span className="gradient-text-accent text-sm sm:text-base">Content Preview</span>
                   <div className="flex items-center gap-2">
                     <Badge variant="outline" className="bg-surface/50 text-xs">
                       {content.content_type.toUpperCase()}
@@ -239,22 +219,22 @@ export function ShareContentModal({
                         variant="ghost"
                         size="sm"
                         onClick={handleCopyContent}
-                        className="text-xs px-3"
+                        className="text-xs px-2 sm:px-3 h-7"
                       >
                         {contentCopied ? (
-                          <CheckCircle className="h-3 w-3 mr-1 text-green-400" />
+                          <CheckCircle className="h-3 w-3 sm:mr-1 text-green-400" />
                         ) : (
-                          <Copy className="h-3 w-3 mr-1" />
+                          <Copy className="h-3 w-3 sm:mr-1" />
                         )}
-                        {contentCopied ? 'Copied!' : 'Copy'}
+                        <span className="hidden sm:inline">{contentCopied ? 'Copied!' : 'Copy'}</span>
                       </Button>
                     </motion.div>
                   </div>
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="bg-gradient-to-br from-surface/40 to-surface/20 rounded-xl p-4 border border-border/50 backdrop-blur-sm max-h-32 overflow-y-auto">
-                  <p className="text-sm text-foreground leading-relaxed">
+                <div className="bg-gradient-to-br from-surface/40 to-surface/20 rounded-xl p-2 sm:p-4 border border-border/50 backdrop-blur-sm max-h-20 sm:max-h-32 overflow-y-auto">
+                  <p className="text-xs sm:text-sm text-foreground leading-relaxed">
                     {content.content.length > 200 
                       ? `${content.content.substring(0, 200)}...`
                       : content.content
@@ -265,59 +245,22 @@ export function ShareContentModal({
             </Card>
           </motion.div>
 
-          {/* Enhanced Share URL */}
-          <motion.div 
-            className="space-y-3"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <div className="flex items-center justify-between">
-              <label className="text-sm font-medium gradient-text">Share Link</label>
-{}
-            </div>
-            <div className="relative">
-              <Input
-                value={shareUrl}
-                readOnly
-                className="flex-1 bg-gradient-to-r from-surface/40 to-surface/20 border-border/50 text-sm pr-24 font-mono"
-              />
-              <div className="absolute right-2 top-1/2 -translate-y-1/2">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    variant="cyber"
-                    size="sm"
-                    onClick={handleCopyUrl}
-                    className="text-xs px-3 h-8"
-                  >
-                    {copied ? (
-                      <CheckCircle className="h-3 w-3 mr-1 text-green-400" />
-                    ) : (
-                      <Link2 className="h-3 w-3 mr-1" />
-                    )}
-                    {copied ? 'Copied!' : 'Copy'}
-                  </Button>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-
           {/* Platform Categories */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.2 }}
           >
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3 sm:mb-4">
               <h3 className="text-sm font-medium gradient-text-secondary">Share to Platform</h3>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 flex-wrap">
                 {['all', 'social', 'professional', 'messaging'].map((category) => (
                   <Button
                     key={category}
                     variant={selectedCategory === category ? 'cyber' : 'ghost'}
                     size="sm"
                     onClick={() => setSelectedCategory(category)}
-                    className="text-xs px-2 py-1 h-7 capitalize"
+                    className="text-xs px-2 py-1 h-6 sm:h-7 capitalize"
                   >
                     {category}
                   </Button>
@@ -325,7 +268,7 @@ export function ShareContentModal({
               </div>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3">
               <AnimatePresence>
                 {filteredOptions.map((option, index) => (
                   <motion.div
@@ -340,23 +283,23 @@ export function ShareContentModal({
                     <Button
                       variant="outline"
                       onClick={() => handlePlatformShare(option.id)}
-                      className="flex items-center gap-3 p-4 h-auto justify-start w-full bg-gradient-to-r from-surface/20 to-surface/10 border-border/50 hover:border-primary/30 transition-all duration-300"
+                      className="flex items-center gap-3 p-3 sm:p-4 h-auto justify-start w-full bg-gradient-to-r from-surface/20 to-surface/10 border-border/50 hover:border-primary/30 transition-all duration-300"
                     >
-                      <div className={`p-2 rounded-xl text-white bg-gradient-to-br ${option.color} ${option.hoverColor} flex-shrink-0 shadow-lg`}>
-                        <option.icon className="h-4 w-4" />
+                      <div className={`p-1.5 sm:p-2 rounded-xl text-white bg-gradient-to-br ${option.color} ${option.hoverColor} flex-shrink-0 shadow-lg`}>
+                        <option.icon className="h-3 w-3 sm:h-4 sm:w-4" />
                       </div>
                       <div className="text-left min-w-0 flex-1">
                         <div className="flex items-center justify-between mb-1">
-                          <span className="font-medium text-sm text-heading">{option.name}</span>
+                          <span className="font-medium text-xs sm:text-sm text-heading">{option.name}</span>
                           <div className="flex items-center gap-1">
                             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                            <span className="text-xs text-green-400">{option.popularity}%</span>
+                            <span className="text-xs text-green-400 hidden sm:inline">{option.popularity}%</span>
                           </div>
                         </div>
-                        <div className="text-xs text-muted">{option.description}</div>
-                        <div className="flex items-center gap-1 mt-1">
+                        <div className="text-xs text-muted hidden sm:block">{option.description}</div>
+                        <div className="flex items-center gap-1 mt-1 sm:mt-1">
                           <ExternalLink className="h-3 w-3 text-primary" />
-                          <span className="text-xs text-primary">Open in new tab</span>
+                          <span className="text-xs text-primary hidden sm:inline">Open in new tab</span>
                         </div>
                       </div>
                     </Button>
@@ -373,7 +316,7 @@ export function ShareContentModal({
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <div className="flex items-center gap-4 text-sm text-muted order-2 sm:order-1">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted order-2 sm:order-1">
               <div className="flex items-center gap-2">
                 <Globe className="h-4 w-4 text-primary" />
                 <span>Created {new Date(content.created_at).toLocaleDateString()}</span>
@@ -383,29 +326,20 @@ export function ShareContentModal({
               </Badge>
             </div>
             
-            <div className="flex items-center gap-3 order-1 sm:order-2">
+            <div className="flex items-center justify-center sm:justify-end gap-2 order-1 sm:order-2">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={handleDownload}
-                  className="flex items-center gap-2 px-4 py-2 hover:border-accent/50 hover:text-accent"
+                  className="flex items-center gap-2 px-3 sm:px-4 py-2 hover:border-accent/50 hover:text-accent text-sm"
                 >
                   <Download className="h-4 w-4" />
                   <span>Download</span>
                 </Button>
               </motion.div>
               
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  variant="gradient"
-                  size="sm"
-                  className="flex items-center gap-2 px-4 py-2"
-                >
-                  <Zap className="h-4 w-4" />
-                  <span>Boost Post</span>
-                </Button>
-              </motion.div>
+
             </div>
           </motion.div>
         </div>
