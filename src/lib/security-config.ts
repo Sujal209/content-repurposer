@@ -10,7 +10,7 @@ export const SECURITY_CONFIG = {
   // CORS settings
   ALLOWED_ORIGINS: process.env.NODE_ENV === 'production' 
     ? [process.env.NEXT_PUBLIC_APP_URL!]
-    : ['http://localhost:3000', 'http://127.0.0.1:3000'],
+    : ['http://localhost:3000', 'http://127.0.0.1:3000', 'https://repurposematee.vercel.app'],
     
   // Rate limiting
   RATE_LIMITS: {

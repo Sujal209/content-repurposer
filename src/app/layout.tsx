@@ -12,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://repurposematee.vercel.app'),
   title: "RepurposeMate - AI-Powered Content Repurposer",
   description: "Transform your long-form content into engaging social media posts with AI. Perfect for indie makers, solopreneurs, and content creators.",
   keywords: ["content repurposing", "AI content", "social media", "indie makers", "content creation"],
